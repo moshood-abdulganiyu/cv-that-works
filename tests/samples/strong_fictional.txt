@@ -1,0 +1,37 @@
+Sample Student Two
+Lagos, Nigeria | sample.studenttwo@gmail.com | +234 803 123 4567 | linkedin.com/in/sample-studenttwo
+
+Summary
+Final-year Computer Science student at the University of Sample (CGPA 4.6/5.0) seeking a data internship. Built a campus reporting tool used by 3 departments and won 1st place at a university hackathon.
+
+Education
+University of Sample, B.Sc. Computer Science, Sep 2022 - Jul 2026
+- CGPA 4.6/5.0, Dean's List in 3 of 4 semesters
+
+Projects
+Campus Fault Reporter | Python, SQL | Jan 2025 - Jun 2025
+- Built a web tool that logged 240 maintenance reports across 3 departments in 5 months
+- Reduced average response time from 9 days to 4 days by routing reports to the right officer
+- Presented the tool to 25 staff members, resulting in adoption by the Estates office
+
+Leadership and Volunteering
+Coding Club, Vice President | Oct 2024 - Present
+- Lead a team of 6 officers running weekly sessions for 40 members
+- Organised a 2-day workshop for 120 first-year students with 3 industry speakers
+Community Outreach Volunteer | Mar 2023 - Dec 2023
+- Taught basic computer skills to 30 secondary school students over 8 Saturdays
+
+Experience
+IT Intern, Sample Tech Ltd | Jun 2025 - Aug 2025
+- Cleaned and analysed sales data of 5,000 rows in Excel, cutting weekly reporting time by 2 hours
+- Documented 12 support procedures used by a team of 4
+
+Skills
+Python, SQL, Excel, Data analysis, Public speaking
+
+Awards
+1st place, University Hackathon 2025
+Certifications and Training
+Google Data Analytics Certificate, 2025
+Languages
+English, Yoruba
