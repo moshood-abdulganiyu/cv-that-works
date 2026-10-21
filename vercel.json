@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/score.py": { "maxDuration": 30, "includeFiles": "core/**" },
+    "api/health.py": { "maxDuration": 10, "includeFiles": "core/**" }
+  }
+}

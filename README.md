@@ -13,3 +13,9 @@ Free CV scoring tool for first-time CVs (BSG). Rubric version: cv-rubric-v1.0. S
 - core/checker.py  the one shared checker that finds the facts
 - core/rules.py    rules-only scoring, fixes, rewrites
 - core/engine.py   file in, report out
+
+## Back end (step 4)
+- api/score.py     POST upload endpoint (thin wrapper), api/health.py quick check
+- core/service.py  multipart reading, consent, limits, privacy strip
+- Tests: python -m tests.test_api    Install for tests: pip install -r requirements-dev.txt
+- Deploy guide: docs/step4_deploy.md

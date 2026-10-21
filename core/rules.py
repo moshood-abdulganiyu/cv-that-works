@@ -5,7 +5,7 @@ import re
 
 from .checker import BULLET_RE, has_number, is_strong_start, _first_word
 from .rubric import (BANDS, LABELS, MAX_POINTS, ORDER_MAX_DEDUCTION, PAIR_POINTS, RUBRIC_VERSION, SECTION_POINTS,
-                     TARGET_KEYWORDS, WEAK_PHRASES)
+                     TARGET_KEYWORDS, WEAK_PHRASES, RESULT_WORDS)
 
 JUDGE_MODE = {"evidence": "range", "bullets": "full", "summary": "full", "fit": "full",
               "language": "part", "format": "part", "sections": "none", "contact": "none"}
@@ -249,8 +249,24 @@ def build_rewrites(f):
         for p in WEAK_PHRASES:
             rest = re.sub(r"^\s*" + re.escape(p) + r"\s+", "", rest, flags=re.I)
         rest = rest.rstrip(". ")
-        out.append({"original": b, "rewrite": f"[Strong verb] {rest[:1].lower() + rest[1:]}, [__ how many, how often or how big], "
-                                              f"which [__ result you can defend]."})
+        label = ""
+        m = re.match(r"^(.{3,60}?)\s+[—–-]\s+(.+)$", rest)          # "Programme name — what you did"
+        if m and len(m.group(1).split()) <= 8:
+            label, rest = m.group(1) + ": ", m.group(2)
+        w0 = rest.split()[0] if rest.split() else ""
+        strong = is_strong_start(_first_word(rest))
+        if not strong and w0[1:].islower() and w0.lower().endswith(("ing", "ed")):
+            rest = rest[:1].lower() + rest[1:]
+        tail = []
+        if not has_number(b):
+            tail.append("[__ how many, how often or how big]")
+        if not any(r in b.lower() for r in RESULT_WORDS):
+            tail.append("which [__ result you can defend]")
+        if strong and not tail and not any(p in b.lower() for p in WEAK_PHRASES):
+            continue
+        text = label + ("" if strong else "[Strong verb] ") + rest + ((", " + ", ".join(tail)) if tail else "")
+        note = "Replace the weak phrase with what you actually did." if any(p in b.lower() for p in WEAK_PHRASES) else ""
+        out.append({"original": b, "rewrite": text + ".", "note": note})
     return out
 
 
@@ -258,7 +274,7 @@ def build_flags(f):
     checks = [
         (r"\b(led|organi[sz]ed|coordinated|chaired)\b", r"\b(attended|participated|member of|joined)\b", "Did you lead this or take part? Say which."),
         (r"\b(prototype|mockup|mock-up|demo)\b", r"\b(deployed|launched|live|rolled out|in use)\b", "Is this a prototype or a live product used by real people? Say which."),
-        (r"\b(total|cumulative|so far|in total)\b", r"\d", "Is this number cumulative or per year? Say which."),
+        (r"\b(total|so far|in total|overall)\b(?!.*\b(cumulative|per year|yearly|each year|annual)\b)", r"\d", "Is this number cumulative or per year? Say which."),
         (r"\b(founded|started|created|launched)\b", r"\b(group|club|society|community|initiative|ngo|foundation)\b", "Is the group registered or informal? Say which."),
         (r"\b(team|group)\b", r"\b(built|won|achieved|increased|reduced|raised)\b", "Was this a team result or your own part of it? Say which."),
         (r"\bgraduates?\b", r"\b(trained|taught|mentored|reached)\b", "Were these undergraduates or graduates? Say which."),
@@ -300,6 +316,8 @@ def score_rules(f, target=None):
         "next_step": nxt,
         "defend_line": "Keep only numbers you can defend in an interview.",
         "less_certain": [],
-        "notices": ["Checked by rules only. The AI check was not used for this result."],
+        "notices": ["Checked by rules only. The AI check was not used for this result."]
+                   + ([f"Your CV still has {len(f['placeholders'])} unfilled placeholder(s) in square brackets, for example {f['placeholders'][0][:40]}. "
+                       "Fill each one with a real detail or delete it before you send the CV."] if f["placeholders"] else []),
         "short_cv_note": "Few bullets found. Add more under Projects or Volunteering." if 0 < f["bullet_total"] < 6 else "",
     }

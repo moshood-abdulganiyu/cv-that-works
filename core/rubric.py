@@ -76,3 +76,9 @@ CITIES = ["lagos", "abuja", "ibadan", "kano", "port harcourt", "enugu", "kaduna"
           "calabar", "uyo", "nsukka", "zaria", "ile-ife", "ife", "yola", "maiduguri", "awka", "asaba", "warri", "sokoto", "minna", "makurdi",
           "lokoja", "osogbo", "ado-ekiti", "nairobi", "accra", "kumasi", "kampala", "kigali", "dar es salaam", "addis ababa", "johannesburg",
           "cape town", "dakar", "cairo", "lusaka", "harare", "lome", "cotonou", "abidjan", "freetown", "monrovia", "banjul", "gaborone", "windhoek"]
+
+CITIES += ["minna", "bauchi", "gombe", "abakaliki", "umuahia", "yenagoa", "dutse", "katsina", "lafia", "jalingo", "damaturu", "gusau", "birnin kebbi",
+           "ado ekiti", "ikeja", "lekki", "ota", "sagamu", "ikorodu", "suleja", "kubwa", "gwagwalada", "lagos island"]
+PLACES = ["Nigeria", "Ghana", "Kenya", "Uganda", "Rwanda", "Tanzania", "Ethiopia", "South Africa", "Senegal", "Cameroon", "Egypt", "Zambia",
+          "Zimbabwe", "Lagos", "Oyo", "Ogun", "Kano", "Kaduna", "Rivers", "Enugu", "Niger", "Plateau", "Delta", "Edo", "FCT", "Abuja", "Ondo", "Osun",
+          "Kwara", "Anambra", "Imo", "Abia", "Benue", "Borno", "Bauchi", "Cross River", "Akwa Ibom", "Ekiti", "Kogi", "Nasarawa", "Sokoto", "Taraba", "Yobe", "Zamfara"]

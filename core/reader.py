@@ -39,6 +39,15 @@ def read_document(name, data, allow_txt=False):
                 raise CVReadError("locked_pdf", "This PDF is password protected. Save an unlocked copy and upload that.")
             pages = len(reader.pages)
             text = "\n".join((p.extract_text() or "") for p in reader.pages)
+            links = []
+            for p in reader.pages:
+                for a in (p.get("/Annots") or []):
+                    try:
+                        uri = a.get_object().get("/A").get_object().get("/URI")
+                        if uri:
+                            links.append(str(uri))
+                    except Exception:
+                        pass
         except CVReadError:
             raise
         except Exception:
@@ -47,7 +56,7 @@ def read_document(name, data, allow_txt=False):
         if len(text) < 100:
             raise CVReadError("scanned_pdf", "This PDF looks like a scan or photo, so we cannot read the words. "
                               "Export it as a PDF from Word or Google Docs (File, Download, PDF) and upload that.")
-        return {"text": text, "pages": pages, "pages_estimated": False}
+        return {"text": text, "pages": pages, "pages_estimated": False, "links": links}
 
     if ext == ".docx":
         try:
@@ -74,10 +83,11 @@ def read_document(name, data, allow_txt=False):
         if len(text) < 100:
             raise CVReadError("empty_file", "We found almost no text in this document. Check you uploaded the right file.")
         pages = max(1, math.ceil(len(text.split()) / WORDS_PER_PAGE))
-        return {"text": text, "pages": pages, "pages_estimated": True}
+        links = [str(r.target_ref) for r in d.part.rels.values() if r.reltype.endswith("/hyperlink")]
+        return {"text": text, "pages": pages, "pages_estimated": True, "links": links}
 
     if ext == ".txt" and allow_txt:      # for testing only, never offered to students
         text = _tidy(data.decode("utf-8", errors="ignore"))
-        return {"text": text, "pages": max(1, math.ceil(len(text.split()) / WORDS_PER_PAGE)), "pages_estimated": True}
+        return {"text": text, "pages": max(1, math.ceil(len(text.split()) / WORDS_PER_PAGE)), "pages_estimated": True, "links": []}
 
     raise CVReadError("unsupported_type", "Please upload a PDF or DOCX file. If your CV is a .doc file, open it in Word and save it as .docx.")

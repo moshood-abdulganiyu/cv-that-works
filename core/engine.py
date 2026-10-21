@@ -8,9 +8,9 @@ from .reader import CVReadError, read_document
 from .rules import score_rules
 
 
-def score_text(text, pages=1, target=None, pages_estimated=False):
+def score_text(text, pages=1, target=None, pages_estimated=False, links=None):
     t0 = time.perf_counter()
-    facts = check_cv(text, pages, pages_estimated)
+    facts = check_cv(text, pages, pages_estimated, links)
     report = score_rules(facts, target)
     report["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
     report["facts"] = {k: v for k, v in facts.items() if k not in ("bullets", "summary_text")}
@@ -19,7 +19,7 @@ def score_text(text, pages=1, target=None, pages_estimated=False):
 
 def score_file(name, data, target=None, allow_txt=False):
     doc = read_document(name, data, allow_txt=allow_txt)
-    return score_text(doc["text"], doc["pages"], target, doc["pages_estimated"])
+    return score_text(doc["text"], doc["pages"], target, doc["pages_estimated"], doc.get("links"))
 
 
 def print_report(r):
