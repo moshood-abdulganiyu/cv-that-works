@@ -5,14 +5,14 @@ import os
 import threading
 import urllib.error
 import urllib.request
-from http.server import HTTPServer
+from wsgiref.simple_server import WSGIRequestHandler, make_server
 from pathlib import Path
 
 os.environ["UPLOADS_PER_DEVICE_PER_DAY"] = "3"
 os.environ["UPLOADS_PER_IP_PER_DAY"] = "50"
 os.environ.pop("KV_REST_API_URL", None); os.environ.pop("UPSTASH_REDIS_REST_URL", None)
 
-from api.score import handler                      # noqa: E402
+from app import app                                # noqa: E402
 from core.service import _scrub, public_report     # noqa: E402
 
 SAMPLES = Path(__file__).parent / "samples"
@@ -49,7 +49,10 @@ def post(port, fields, file=None, cookie=None):
 
 
 def main():
-    srv = HTTPServer(("127.0.0.1", 0), handler)
+    class Quiet(WSGIRequestHandler):
+        def log_message(self, *a):
+            pass
+    srv = make_server("127.0.0.1", 0, app, handler_class=Quiet)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     port = srv.server_port
     cv = make_docx((SAMPLES / "strong_fictional.txt").read_text())
@@ -62,6 +65,8 @@ def main():
     assert "@" not in dumped.replace("[email]", ""), "email leaked"
     cookie = c1.split(";")[0]
     assert p["uploads_left_today"] == 2
+    h = json.loads(urllib.request.urlopen(f'http://127.0.0.1:{port}/api/health').read())
+    assert h['ok'] and h['rubric_version']
     print("ok  scores a DOCX, no facts in response, cookie set, 2 uploads left")
 
     s, p, _ = post(port, {"target": "internship"}, ("cv.docx", cv), cookie)
