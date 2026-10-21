@@ -1,1 +1,445 @@
-<!doctype html><title>CV That Works</title><p>Front end arrives in step 5.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV That Works: score my CV</title>
+<meta name="description" content="Upload your first CV and get a score out of 100, what is working and the three fixes that matter most.">
+<style>
+:root{
+  --paper:#F5F7F6; --card:#FFFFFF; --ink:#16231E; --muted:#51605A; --line:#D5DDD9;
+  --brand:#0E5A43; --brand-dark:#0A4332; --focus:#1D5FD1;
+  --rebuild:#B3402A; --needs:#C98512; --nearly:#2A7F9E; --ready:#14804F;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#0F1713; --card:#17221D; --ink:#EAF1EE; --muted:#9DB0A8; --line:#2B3A33;
+        --brand:#3DBB8C; --brand-dark:#5ED0A3; --focus:#7FB0FF;
+        --rebuild:#E0745F; --needs:#E3A532; --nearly:#5CB6D6; --ready:#47C58A;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 56px}
+header.top{padding:8px 0 18px}
+.brandline{font-weight:700;color:var(--brand);font-size:15px}
+h1{font:700 clamp(28px,6vw,40px)/1.15 var(--serif);margin:10px 0 8px}
+h2{font:700 22px/1.25 var(--serif);margin:0 0 12px}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 12px}
+.lead{color:var(--muted);font-size:18px;max-width:60ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin:16px 0}
+label.field{display:block;font-weight:600;margin-bottom:6px}
+.hint{color:var(--muted);font-size:14px;margin:4px 0 0}
+input[type=file],select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit}
+.row{margin-bottom:18px}
+.consent{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.consent input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--brand)}
+.consent span{font-size:15px}
+button.main,button.alt{font:600 17px var(--sans);border-radius:8px;padding:14px 20px;cursor:pointer;min-height:48px}
+button.main{width:100%;background:var(--brand);color:#fff;border:0}
+button.main:hover{background:var(--brand-dark)}
+button.main[disabled]{opacity:.65;cursor:progress}
+button.alt{background:transparent;color:var(--brand);border:2px solid var(--brand)}
+@media (prefers-color-scheme:dark){button.main{color:#06130D}}
+.error{display:none;border:1px solid var(--rebuild);border-left-width:6px;border-radius:8px;padding:12px 14px;margin:0 0 16px;background:var(--card)}
+.error.show{display:block}
+.error strong{display:block}
+.prev{display:none;border-left:6px solid var(--nearly);padding:10px 14px;margin:0 0 16px;background:var(--card);border-radius:8px}
+.prev.show{display:block}
+.left{color:var(--muted);font-size:14px;text-align:center;margin-top:10px}
+.status{min-height:24px;color:var(--muted);text-align:center;margin-top:10px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;vertical-align:-2px;margin-right:8px;animation:sp 0.9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+
+/* result */
+#result{display:none}
+#result.show{display:block}
+.hero{padding:22px 20px}
+.bandname{font:700 clamp(34px,9vw,52px)/1.05 var(--serif);margin:0}
+.scoreline{margin:6px 0 18px;color:var(--muted)}
+.scoreline b{color:var(--ink);font-size:20px}
+.ladder{display:flex;height:34px;border-radius:6px;overflow:hidden;position:relative}
+.seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.seg.r{background:var(--rebuild);width:50%}.seg.n{background:var(--needs);width:20%}
+.seg.y{background:var(--nearly);width:15%}.seg.g{background:var(--ready);width:15%}
+@media (prefers-color-scheme:dark){.seg{color:#0B120F}}
+.marker{position:absolute;top:-6px;bottom:-6px;width:4px;background:var(--ink);border-radius:2px;transform:translateX(-2px);box-shadow:0 0 0 2px var(--card)}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
+.compare{margin-top:14px;padding:10px 14px;border-radius:8px;background:var(--paper);border:1px solid var(--line)}
+.cat{margin:0 0 14px}
+.cathead{display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.cathead span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:5px}
+.uncertain{font-size:14px;color:var(--needs);margin-top:4px;font-weight:600}
+ul.plain{list-style:none;padding:0;margin:0}
+ul.plain li{padding:12px 0;border-top:1px solid var(--line)}
+ul.plain li:first-child{border-top:0;padding-top:0}
+.gain{display:inline-block;font-weight:700;color:var(--ready);margin-left:6px;white-space:nowrap}
+.why{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.rw{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 12px;background:var(--paper)}
+.rw .tag{font-weight:700;font-size:14px;color:var(--muted)}
+.rw .new{border-left:4px solid var(--ready);padding-left:10px;margin:4px 0 8px}
+.next{border-left:6px solid var(--brand)}
+.defend{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--paper);font-size:15px}
+.note{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:0 0 10px;background:var(--card);color:var(--muted)}
+footer{color:var(--muted);font-size:13px;margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brandline">Brainstorm Group · CV That Works</div>
+    <h1>Score my CV</h1>
+    <p class="lead">Upload your first CV and get a score out of 100, what is working, and the three fixes that will lift it most.</p>
+  </header>
+
+  <main>
+    <section id="formView" aria-labelledby="formTitle">
+      <div class="card">
+        <h2 id="formTitle">Upload your CV</h2>
+        <div id="prevBox" class="prev" role="note"></div>
+        <div id="errorBox" class="error" role="alert" tabindex="-1"></div>
+
+        <form id="scoreForm" novalidate>
+          <div class="row">
+            <label class="field" for="file">Your CV (PDF or Word file)</label>
+            <input id="file" name="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            <p class="hint">PDF or DOCX, up to <span id="maxMb">4</span> MB. Scanned photos of a CV will not work. Save or export it from Word or Google Docs instead.</p>
+          </div>
+
+          <div class="row">
+            <label class="field" for="target">What is this CV for?</label>
+            <select id="target" name="target">
+              <option value="not sure">Not sure yet</option>
+              <option value="internship">Internship</option>
+              <option value="scholarship">Scholarship</option>
+              <option value="graduate study">Graduate study</option>
+              <option value="leadership">Leadership or volunteering role</option>
+            </select>
+            <p class="hint">Picking a target adds a “fit to goal” score. “Not sure” scores the rest out of 100.</p>
+          </div>
+
+          <div class="row">
+            <label class="consent" for="consent">
+              <input id="consent" name="consent" type="checkbox">
+              <span>I agree that my CV file is read in memory, scored and then deleted. Nothing about me is saved. I know I should remove my phone number and home address from the file before I upload it.</span>
+            </label>
+          </div>
+
+          <button class="main" id="go" type="submit">Score my CV</button>
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+          <div class="left" id="left"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="result" aria-live="polite" tabindex="-1"></section>
+  </main>
+
+  <footer>The score is an estimate, not a verdict. Your trainer has the final word.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var MAX_BYTES = 4 * 1024 * 1024;
+  var KEY = "cvtw_prev";
+  var $ = function(id){ return document.getElementById(id); };
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+  function add(parent){ for (var i=1;i<arguments.length;i++){ if (arguments[i]) parent.appendChild(arguments[i]); } return parent; }
+  function pick(o, keys){
+    if (typeof o === "string") return o;
+    if (!o || typeof o !== "object") return "";
+    for (var i=0;i<keys.length;i++){ if (typeof o[keys[i]] === "string" && o[keys[i]]) return o[keys[i]]; }
+    return "";
+  }
+  function fallbackText(o){
+    if (typeof o === "string") return o;
+    if (!o || typeof o !== "object") return "";
+    return Object.keys(o).map(function(k){ return typeof o[k] === "string" ? o[k] : ""; }).filter(Boolean).join(" ");
+  }
+  function num(x){ var n = Number(x); return isFinite(n) ? n : 0; }
+  function bandClass(b){
+    b = String(b||"").toLowerCase();
+    if (b.indexOf("ready") === 0) return "var(--ready)";
+    if (b.indexOf("nearly") === 0) return "var(--nearly)";
+    if (b.indexOf("needs") === 0) return "var(--needs)";
+    return "var(--rebuild)";
+  }
+
+  /* ---------- previous score (score and band only, no CV text) ---------- */
+  function getPrev(){
+    try { var v = JSON.parse(sessionStorage.getItem(KEY)); return (v && typeof v.score === "number") ? v : null; }
+    catch(e){ return null; }
+  }
+  function setPrev(score, band){
+    try { sessionStorage.setItem(KEY, JSON.stringify({score:score, band:band})); } catch(e){}
+  }
+  function showPrevOnForm(){
+    var p = getPrev(), box = $("prevBox");
+    if (p){
+      box.textContent = "Your last score this session: " + p.score + " (" + p.band + "). Upload your improved CV to see the change.";
+      box.classList.add("show");
+    } else { box.classList.remove("show"); }
+  }
+
+  /* ---------- errors ---------- */
+  function showError(title, message){
+    var b = $("errorBox");
+    b.textContent = "";
+    add(b, el("strong", null, title), el("span", null, message));
+    b.classList.add("show");
+    b.focus();
+  }
+  function clearError(){ $("errorBox").classList.remove("show"); $("errorBox").textContent = ""; }
+  var TITLES = {
+    missing_consent:"Please tick the consent box", no_file:"No file chosen", too_large:"File is too large",
+    empty_file:"The file is empty", locked_pdf:"The PDF is locked", corrupt:"The file could not be opened",
+    scanned_pdf:"This looks like a scanned PDF", unsupported_type:"Use a PDF or DOCX file",
+    limit_reached:"Daily limit reached", bad_request:"Something was missing", server_error:"Something went wrong on our side"
+  };
+
+  /* ---------- health: show the real file limit ---------- */
+  fetch("/api/health").then(function(r){ return r.json(); }).then(function(h){
+    if (h && h.max_file_mb){ MAX_BYTES = h.max_file_mb * 1024 * 1024; $("maxMb").textContent = h.max_file_mb; }
+  }).catch(function(){});
+
+  /* ---------- submit ---------- */
+  var busy = false;
+  $("scoreForm").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    if (busy) return;
+    clearError();
+    var f = $("file").files[0];
+    if (!f){ showError(TITLES.no_file, "Choose your CV file first."); return; }
+    if (!/\.(pdf|docx)$/i.test(f.name)){ showError(TITLES.unsupported_type, "Upload a PDF or a DOCX file. Older .doc files should be saved as DOCX first."); return; }
+    if (f.size > MAX_BYTES){ showError(TITLES.too_large, "Your file is over " + Math.round(MAX_BYTES/1048576) + " MB. Export a smaller PDF or remove large images."); return; }
+    if (!$("consent").checked){ showError(TITLES.missing_consent, "Tick the box to confirm you have read how your file is handled."); return; }
+
+    var fd = new FormData();
+    fd.append("file", f);
+    fd.append("target", $("target").value);
+    fd.append("consent", "true");
+
+    busy = true;
+    var btn = $("go");
+    btn.disabled = true;
+    btn.textContent = "Scoring your CV";
+    $("status").textContent = "";
+    var sp = el("span","spin"); sp.setAttribute("aria-hidden","true");
+    add($("status"), sp, document.createTextNode("Reading and scoring. This usually takes a few seconds."));
+
+    var ctrl = new AbortController();
+    var timer = setTimeout(function(){ ctrl.abort(); }, 60000);
+
+    fetch("/api/score", {method:"POST", body:fd, signal:ctrl.signal})
+      .then(function(r){
+        return r.text().then(function(t){
+          var data = null; try { data = JSON.parse(t); } catch(e){}
+          return {status:r.status, data:data};
+        });
+      })
+      .then(function(res){
+        if (res.data && res.data.ok){ render(res.data); return; }
+        if (res.data && res.data.error){
+          showError(TITLES[res.data.error.code] || "Could not score this CV", res.data.error.message || "Please try again.");
+        } else if (res.status === 413){
+          showError(TITLES.too_large, "Your file is too large. Export a smaller PDF and try again.");
+        } else {
+          showError(TITLES.server_error, "The server sent an unexpected reply. Wait a moment and try again.");
+        }
+      })
+      .catch(function(e){
+        if (e && e.name === "AbortError") showError("This is taking too long", "The check timed out. Try again on a steadier connection.");
+        else showError("No connection", "We could not reach the server. Check your data or Wi-Fi and try again.");
+      })
+      .then(function(){
+        clearTimeout(timer);
+        busy = false; btn.disabled = false; btn.textContent = "Score my CV"; $("status").textContent = "";
+      });
+  });
+
+  /* ---------- render result ---------- */
+  function section(title){ var s = el("section","card"); if (title) add(s, el("h2",null,title)); return s; }
+
+  function render(payload){
+    var r = payload.result || {};
+    var prev = getPrev();
+    var score = Math.round(num(r.score)), band = r.band || "";
+    var root = $("result"); root.textContent = "";
+
+    /* 1. total, band, ladder */
+    var hero = el("section","card hero");
+    var bn = el("p","bandname",band); bn.style.color = bandClass(band);
+    var sl = el("p","scoreline"); add(sl, el("b",null,score + " out of 100"), document.createTextNode(r.approximate === false ? "" : "  (approximate)"));
+    var lad = el("div","ladder"); lad.setAttribute("role","img");
+    lad.setAttribute("aria-label","Score " + score + " out of 100, band " + band);
+    add(lad, el("div","seg r","Rebuild"), el("div","seg n","Needs work"), el("div","seg y","Nearly"), el("div","seg g","Ready"));
+    var mk = el("div","marker"); mk.style.left = Math.max(0, Math.min(100, score)) + "%"; lad.appendChild(mk);
+    var tk = el("div","ticks"); add(tk, el("span",null,"0"), el("span",null,"50"), el("span",null,"70"), el("span",null,"85"), el("span",null,"100"));
+    add(hero, bn, sl, lad, tk);
+    if (prev){
+      var d = score - prev.score;
+      var txt = "Last time: " + prev.score + " (" + prev.band + "). Now: " + score + " (" + band + "). " +
+        (d > 0 ? "Up " + d + " points." : d < 0 ? "Down " + Math.abs(d) + " points." : "No change.");
+      hero.appendChild(el("p","compare",txt));
+    }
+    if (r.target && r.target !== "none") hero.appendChild(el("p","hint","Scored against the target: " + r.target + "."));
+    root.appendChild(hero);
+
+    /* notices and short CV note */
+    var notices = Array.isArray(r.notices) ? r.notices : [];
+    notices.forEach(function(n){ var t = fallbackText(n); if (t) root.appendChild(el("p","note",t)); });
+    if (r.short_cv_note) root.appendChild(el("p","note",fallbackText(r.short_cv_note)));
+
+    /* less certain set */
+    var uncertain = {};
+    (Array.isArray(r.less_certain) ? r.less_certain : []).forEach(function(u){
+      var k = typeof u === "string" ? u : (u && (u.category || u.key || u.label)) || "";
+      if (k) uncertain[String(k).toLowerCase()] = true;
+    });
+
+    /* 2. categories */
+    var cats = r.categories || {};
+    var list = Array.isArray(cats) ? cats.map(function(c){ return {key:c.key||c.label, c:c}; })
+                                    : Object.keys(cats).map(function(k){ return {key:k, c:cats[k]}; });
+    var cs = section("Score by category");
+    list.forEach(function(it){
+      var c = it.c || {}, max = num(c.max), pts = num(c.points);
+      var row = el("div","cat");
+      var head = el("div","cathead");
+      add(head, el("span",null,c.label || it.key), el("span",null,(Math.round(pts*10)/10) + " / " + max));
+      var bar = el("div","bar"); var fill = el("i"); fill.style.width = (max ? Math.max(0, Math.min(100, pts/max*100)) : 0) + "%"; bar.appendChild(fill);
+      add(row, head, bar);
+      if (uncertain[String(it.key).toLowerCase()] || uncertain[String(c.label||"").toLowerCase()])
+        row.appendChild(el("div","uncertain","Less certain: the checks did not fully agree here."));
+      cs.appendChild(row);
+    });
+    if (list.length) root.appendChild(cs);
+
+    /* 3. what is working */
+    var st = Array.isArray(r.strengths) ? r.strengths : [];
+    if (st.length){
+      var ss = section("What is working"); var ul = el("ul","plain");
+      st.forEach(function(s){
+        var li = el("li");
+        var main = pick(s, ["title","strength","label","text","what","point"]);
+        var why = pick(s, ["reason","why","detail","because"]);
+        if (!main) main = fallbackText(s);
+        add(li, el("strong",null,main));
+        if (why) li.appendChild(el("span","why",why));
+        ul.appendChild(li);
+      });
+      ss.appendChild(ul); root.appendChild(ss);
+    }
+
+    /* 4. top fixes */
+    var fx = Array.isArray(r.fixes) ? r.fixes : [];
+    if (fx.length){
+      var fs = section("Your top fixes, in order"); var ol = el("ol"); ol.style.paddingLeft = "20px"; ol.style.margin = "0";
+      fx.forEach(function(f){
+        var li = el("li"); li.style.padding = "8px 0";
+        var main = pick(f, ["fix","title","text","message","label","what"]);
+        var why = pick(f, ["why","reason","detail"]);
+        if (!main) main = fallbackText(f);
+        var strong = el("strong",null,main); li.appendChild(strong);
+        if (f && f.gain !== undefined && f.gain !== null) li.appendChild(el("span","gain","+" + num(f.gain) + " points"));
+        if (why) li.appendChild(el("span","why",why));
+        ol.appendChild(li);
+      });
+      fs.appendChild(ol); root.appendChild(fs);
+    }
+
+    /* 5. missing sections */
+    var ms = Array.isArray(r.missing_sections) ? r.missing_sections : [];
+    if (ms.length){
+      var msec = section("Sections to add"); var chips = el("div","chips");
+      ms.forEach(function(m){ chips.appendChild(el("span",null,pick(m,["label","name","section"]) || fallbackText(m))); });
+      msec.appendChild(chips); root.appendChild(msec);
+    }
+
+    /* 6. rewrites */
+    var rw = Array.isArray(r.rewrites) ? r.rewrites : [];
+    if (rw.length){
+      var rs = section("Two bullets to rewrite");
+      rs.appendChild(el("p","hint","Fill every [__] with a real number from your own experience. If you do not have one, leave the bullet without it."));
+      rw.forEach(function(w){
+        var box = el("div","rw");
+        add(box, el("div","tag","Your bullet"), el("p",null,pick(w,["original"])),
+                 el("div","tag","Stronger version"), el("p","new",pick(w,["rewrite"])));
+        var nt = pick(w,["note"]); if (nt) box.appendChild(el("p","hint",nt));
+        rs.appendChild(box);
+      });
+      root.appendChild(rs);
+    }
+
+    /* 7. blurred distinction questions */
+    var fl = Array.isArray(r.flags) ? r.flags : [];
+    if (fl.length){
+      var fsec = section("Check these claims");
+      fsec.appendChild(el("p","hint","Each question is about a line that could be read two ways. Make sure the CV says exactly what is true."));
+      var fu = el("ul","plain");
+      fl.forEach(function(x){
+        var li = el("li"); var b = pick(x,["bullet"]), q = pick(x,["question"]);
+        if (b) li.appendChild(el("span","why",b));
+        add(li, el("strong",null,q || fallbackText(x)));
+        fu.appendChild(li);
+      });
+      fsec.appendChild(fu); root.appendChild(fsec);
+    }
+
+    /* 8. next step and defend line */
+    var ns = section("Your next step"); ns.classList.add("next");
+    ns.appendChild(el("p",null,fallbackText(r.next_step) || "Fix the first item above, then upload the new version."));
+    root.appendChild(ns);
+    var dl = el("p","note defend", fallbackText(r.defend_line) || "Keep only numbers you can defend if someone asks you about them.");
+    dl.style.color = "var(--ink)";
+    root.appendChild(dl);
+
+    /* again */
+    var again = section();
+    var ab = el("button","alt","Upload an improved version"); ab.type = "button";
+    ab.addEventListener("click", function(){ showForm(); });
+    again.appendChild(ab);
+    if (typeof payload.uploads_left_today === "number")
+      again.appendChild(el("p","hint","Uploads left today: " + payload.uploads_left_today + "."));
+    root.appendChild(again);
+
+    /* save previous AFTER rendering the comparison */
+    setPrev(score, band);
+    $("left").textContent = (typeof payload.uploads_left_today === "number") ? "Uploads left today: " + payload.uploads_left_today : "";
+
+    $("formView").style.display = "none";
+    root.classList.add("show");
+    root.focus();
+    window.scrollTo(0, 0);
+  }
+
+  function showForm(){
+    $("result").classList.remove("show");
+    $("formView").style.display = "";
+    $("file").value = "";
+    clearError();
+    showPrevOnForm();
+    window.scrollTo(0, 0);
+    $("file").focus();
+  }
+
+  showPrevOnForm();
+})();
+</script>
+</body>
+</html>
