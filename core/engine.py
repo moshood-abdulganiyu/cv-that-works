@@ -16,6 +16,9 @@ def score_text(text, pages=1, target=None, pages_estimated=False, links=None, ju
         try:
             from .judge import attach_judge, judge_cv
             attach_judge(report, judge_cv(facts, None if report["target"] == "none" else report["target"]))
+            from .blend import blend_report
+            if report.get("judge", {}).get("ok"):
+                report.update(blend_report(report))
         except Exception:
             report["judge"] = {"ok": False, "reason": "error"}
     report["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
