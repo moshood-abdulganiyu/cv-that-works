@@ -96,7 +96,7 @@ def score_sections(f):
 
 def score_summary(f):
     if not f["summary_present"]:
-        return _cat("summary", [_item("Summary present", 0, 4, "no opening summary found"), _item("Right length", 0, 2),
+        return _cat("summary", [_item("Summary present", 0, 4, "no opening summary found"), _item("Right length (2 to 3 lines)", 0, 2),
                                 _item("Names your goal", 0, 2), _item("One proof point", 0, 2)])
     note = "" if f["summary_headed"] else " (add a heading called Summary)"
     return _cat("summary", [
@@ -183,8 +183,9 @@ def build_fixes(f, cats, target):
             tip = {"Summary present": "Add a 2 to 3 line summary at the top: who you are, your goal, one proof point.",
                    "Right length (2 to 3 lines)": "Bring your summary to 2 or 3 lines (25 to 60 words).",
                    "Names your goal": "Say in your summary what you are applying for.",
-                   "One proof point": "Add one proof point to your summary: a number, award or result."}[it["name"]]
-            add("summary", tip, it["max"] - it["points"])
+                   "One proof point": "Add one proof point to your summary: a number, award or result."}.get(it["name"])
+            if tip:
+                add("summary", tip, it["max"] - it["points"])
     tips = {"Professional email": "Use a name-based email like firstname.lastname@gmail.com.",
             "Custom LinkedIn link": "Add your LinkedIn link and customise it to linkedin.com/in/yourname.",
             "Phone number": "Add a phone number in the header.", "City": "Add your city under your name."}
