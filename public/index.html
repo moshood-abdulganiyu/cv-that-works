@@ -3,107 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CV That Works: score my CV</title>
+<title>CV That Works | Brainstorm Group</title>
 <meta name="description" content="Upload your first CV and get a score out of 100, what is working and the three fixes that matter most.">
 <style>
 :root{
-  --paper:#F5F7F6; --card:#FFFFFF; --ink:#16231E; --muted:#51605A; --line:#D5DDD9;
-  --brand:#0E5A43; --brand-dark:#0A4332; --focus:#1D5FD1;
-  --rebuild:#B3402A; --needs:#C98512; --nearly:#2A7F9E; --ready:#14804F;
+  --bg1:#FFFFFF; --bg2:#E2EDFF; --card:#FFFFFF; --ink:#12263F; --muted:#485C74; --line:#CBD9EC;
+  --navy:#275A91; --orange:#FE9B02; --green:#3FAE5F;
+  --btn:#275A91; --btn-hover:#1B4373; --btn-ink:#FFFFFF; --bar:#275A91; --focus:#C26A00;
+  --rebuild:#C2412D; --needs:#FE9B02; --nearly:#3F78B5; --ready:#3FAE5F;
+  --rebuild-text:#B23A27; --needs-text:#A85F00; --nearly-text:#275A91; --ready-text:#1F7F42;
   --serif:Georgia,"Times New Roman",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{--paper:#0F1713; --card:#17221D; --ink:#EAF1EE; --muted:#9DB0A8; --line:#2B3A33;
-        --brand:#3DBB8C; --brand-dark:#5ED0A3; --focus:#7FB0FF;
-        --rebuild:#E0745F; --needs:#E3A532; --nearly:#5CB6D6; --ready:#47C58A;}
+  :root{--bg1:#0B1626; --bg2:#10223A; --card:#14243A; --ink:#EAF1FB; --muted:#A5B7CC; --line:#2A3F5C;
+        --btn:#FE9B02; --btn-hover:#FFB033; --btn-ink:#12263F; --bar:#6FA6E3; --focus:#FFB033;
+        --rebuild-text:#FF8A75; --needs-text:#FFB033; --nearly-text:#8CBBF0; --ready-text:#5ACB7C;}
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+html{-webkit-text-size-adjust:100%;background:var(--bg2)}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg1) 0,var(--bg2) 100%);color:var(--ink);font:16px/1.55 var(--sans)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.wrap{max-width:720px;margin:0 auto;padding:20px 16px 56px}
-header.top{padding:8px 0 18px}
-.brandline{font-weight:700;color:var(--brand);font-size:15px}
-h1{font:700 clamp(28px,6vw,40px)/1.15 var(--serif);margin:10px 0 8px}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 40px}
+header.top{background:var(--navy);color:#fff;border-radius:16px;padding:22px 20px 24px;margin:0 0 8px}
+.eyebrow{letter-spacing:.32em;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff;opacity:.92}
+h1{font:italic 800 clamp(34px,8vw,48px)/1.1 var(--sans);color:var(--orange);margin:10px 0 8px}
 h2{font:700 22px/1.25 var(--serif);margin:0 0 12px}
 h3{font-size:16px;margin:0 0 6px}
 p{margin:0 0 12px}
-.lead{color:var(--muted);font-size:18px;max-width:60ch}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin:16px 0}
+.lead{color:#fff;font-size:18px;max-width:52ch;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+#formView .card{border-top:5px solid var(--orange)}
 label.field{display:block;font-weight:600;margin-bottom:6px}
 .hint{color:var(--muted);font-size:14px;margin:4px 0 0}
-input[type=file],select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit}
+input[type=file],select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg1);color:var(--ink);font:inherit}
 .row{margin-bottom:18px}
-.consent{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
-.consent input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--brand)}
+.consent{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--bg2)}
+.consent input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--navy)}
 .consent span{font-size:15px}
-button.main,button.alt{font:600 17px var(--sans);border-radius:8px;padding:14px 20px;cursor:pointer;min-height:48px}
-button.main{width:100%;background:var(--brand);color:#fff;border:0}
-button.main:hover{background:var(--brand-dark)}
+button.main,button.alt{font:700 17px var(--sans);border-radius:10px;padding:14px 20px;cursor:pointer;min-height:48px}
+button.main{width:100%;background:var(--btn);color:var(--btn-ink);border:0}
+button.main:hover{background:var(--btn-hover)}
 button.main[disabled]{opacity:.65;cursor:progress}
-button.alt{background:transparent;color:var(--brand);border:2px solid var(--brand)}
-@media (prefers-color-scheme:dark){button.main{color:#06130D}}
+button.alt{background:transparent;color:var(--nearly-text);border:2px solid var(--nearly-text)}
 .error{display:none;border:1px solid var(--rebuild);border-left-width:6px;border-radius:8px;padding:12px 14px;margin:0 0 16px;background:var(--card)}
 .error.show{display:block}
-.error strong{display:block}
-.prev{display:none;border-left:6px solid var(--nearly);padding:10px 14px;margin:0 0 16px;background:var(--card);border-radius:8px}
+.error strong{display:block;color:var(--rebuild-text)}
+.prev{display:none;border-left:6px solid var(--orange);padding:10px 14px;margin:0 0 16px;background:var(--bg2);border-radius:8px}
 .prev.show{display:block}
 .left{color:var(--muted);font-size:14px;text-align:center;margin-top:10px}
 .status{min-height:24px;color:var(--muted);text-align:center;margin-top:10px}
-.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;vertical-align:-2px;margin-right:8px;animation:sp 0.9s linear infinite}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--orange);border-radius:50%;vertical-align:-2px;margin-right:8px;animation:sp 0.9s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.spin{animation:none}}
 
-/* result */
 #result{display:none}
 #result.show{display:block}
-.hero{padding:22px 20px}
-.bandname{font:700 clamp(34px,9vw,52px)/1.05 var(--serif);margin:0}
+.hero{padding:22px 20px;border-top:5px solid var(--orange)}
+.bandname{font:italic 800 clamp(34px,9vw,52px)/1.05 var(--sans);margin:0}
 .scoreline{margin:6px 0 18px;color:var(--muted)}
 .scoreline b{color:var(--ink);font-size:20px}
-.ladder{display:flex;height:34px;border-radius:6px;overflow:hidden;position:relative}
-.seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
-.seg.r{background:var(--rebuild);width:50%}.seg.n{background:var(--needs);width:20%}
-.seg.y{background:var(--nearly);width:15%}.seg.g{background:var(--ready);width:15%}
-@media (prefers-color-scheme:dark){.seg{color:#0B120F}}
+.ladder{display:flex;height:34px;border-radius:8px;overflow:hidden;position:relative}
+.seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.seg.r{background:var(--rebuild);color:#fff;width:50%}
+.seg.n{background:var(--needs);color:#12263F;width:20%}
+.seg.y{background:var(--nearly);color:#fff;width:15%}
+.seg.g{background:var(--ready);color:#12263F;width:15%}
 .marker{position:absolute;top:-6px;bottom:-6px;width:4px;background:var(--ink);border-radius:2px;transform:translateX(-2px);box-shadow:0 0 0 2px var(--card)}
 .ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
-.compare{margin-top:14px;padding:10px 14px;border-radius:8px;background:var(--paper);border:1px solid var(--line)}
+.compare{margin-top:14px;padding:10px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--line)}
 .cat{margin:0 0 14px}
 .cathead{display:flex;justify-content:space-between;gap:12px;font-weight:600}
 .cathead span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
 .bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:5px}
-.bar i{display:block;height:100%;background:var(--brand);border-radius:5px}
-.uncertain{font-size:14px;color:var(--needs);margin-top:4px;font-weight:600}
+.bar i{display:block;height:100%;background:var(--bar);border-radius:5px}
+.uncertain{font-size:14px;color:var(--needs-text);margin-top:4px;font-weight:600}
 ul.plain{list-style:none;padding:0;margin:0}
 ul.plain li{padding:12px 0;border-top:1px solid var(--line)}
 ul.plain li:first-child{border-top:0;padding-top:0}
-.gain{display:inline-block;font-weight:700;color:var(--ready);margin-left:6px;white-space:nowrap}
+.gain{display:inline-block;font-weight:700;color:var(--ready-text);margin-left:6px;white-space:nowrap}
 .why{color:var(--muted);font-size:15px;display:block;margin-top:2px}
-.rw{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 12px;background:var(--paper)}
+.rw{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 12px;background:var(--bg2)}
 .rw .tag{font-weight:700;font-size:14px;color:var(--muted)}
-.rw .new{border-left:4px solid var(--ready);padding-left:10px;margin:4px 0 8px}
-.next{border-left:6px solid var(--brand)}
+.rw .new{border-left:4px solid var(--green);padding-left:10px;margin:4px 0 8px}
+.next{border-left:6px solid var(--orange)}
 .defend{font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--paper);font-size:15px}
+.chips span{border:1px solid var(--orange);border-radius:999px;padding:4px 12px;background:var(--bg2);font-size:15px}
 .note{border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:0 0 10px;background:var(--card);color:var(--muted)}
-footer{color:var(--muted);font-size:13px;margin-top:28px}
+footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;text-align:center;font-size:14px;margin-top:28px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="brandline">Brainstorm Group · CV That Works</div>
-    <h1>Score my CV</h1>
-    <p class="lead">Upload your first CV and get a score out of 100, what is working, and the three fixes that will lift it most.</p>
+    <div class="eyebrow">Brainstorm Group presents</div>
+    <h1>CV That Works</h1>
+    <p class="lead">Turn your student experiences, skills and achievements into a CV that gets noticed. Upload yours and get a score out of 100, what is working, and the three fixes that matter most.</p>
   </header>
 
   <main>
     <section id="formView" aria-labelledby="formTitle">
       <div class="card">
-        <h2 id="formTitle">Upload your CV</h2>
+        <h2 id="formTitle">Score my CV</h2>
         <div id="prevBox" class="prev" role="note"></div>
         <div id="errorBox" class="error" role="alert" tabindex="-1"></div>
 
@@ -174,10 +176,10 @@ footer{color:var(--muted);font-size:13px;margin-top:28px}
   function num(x){ var n = Number(x); return isFinite(n) ? n : 0; }
   function bandClass(b){
     b = String(b||"").toLowerCase();
-    if (b.indexOf("ready") === 0) return "var(--ready)";
-    if (b.indexOf("nearly") === 0) return "var(--nearly)";
-    if (b.indexOf("needs") === 0) return "var(--needs)";
-    return "var(--rebuild)";
+    if (b.indexOf("ready") === 0) return "var(--ready-text)";
+    if (b.indexOf("nearly") === 0) return "var(--nearly-text)";
+    if (b.indexOf("needs") === 0) return "var(--needs-text)";
+    return "var(--rebuild-text)";
   }
 
   /* ---------- previous score (score and band only, no CV text) ---------- */
