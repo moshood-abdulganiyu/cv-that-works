@@ -127,6 +127,8 @@ def check_cv(text, pages=1, pages_estimated=False, links=None):
     f["sections_found"] = sorted(sections)
     f["section_content_lines"] = {k: len([l for l in v if len(l.split()) >= 2]) for k, v in sections.items()}
     f["section_order"] = [k for k, _ in order]
+    f["skills_text"] = " | ".join(sections.get("skills", []))[:600]
+    f["name_line"] = (top[0] if top else (lines[0] if lines else ""))[:80]
     f["section_line_index"] = {}
     for k, i in order:
         f["section_line_index"].setdefault(k, i)

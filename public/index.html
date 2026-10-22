@@ -131,7 +131,7 @@ footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;te
           <div class="row">
             <label class="consent" for="consent">
               <input id="consent" name="consent" type="checkbox">
-              <span>I agree that my CV file is read in memory, scored and then deleted. Nothing about me is saved. I know I should remove my phone number and home address from the file before I upload it.</span>
+              <span>I agree that my CV is read in memory, scored and then deleted, and that this tool saves nothing about me. To judge the quality of the writing, the CV text is sent to an outside AI service (Google Gemini) with my name, email, phone number and links removed. Free AI services may keep this text and let people at the provider read it. Details like my school, clubs and town stay in the text, so I will take out anything I do not want shared, including my home address.</span>
             </label>
           </div>
 
@@ -242,7 +242,7 @@ footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;te
     btn.textContent = "Scoring your CV";
     $("status").textContent = "";
     var sp = el("span","spin"); sp.setAttribute("aria-hidden","true");
-    add($("status"), sp, document.createTextNode("Reading and scoring. This usually takes a few seconds."));
+    add($("status"), sp, document.createTextNode("Reading and scoring. The AI check can add a few seconds."));
 
     var ctrl = new AbortController();
     var timer = setTimeout(function(){ ctrl.abort(); }, 60000);
@@ -386,6 +386,36 @@ footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;te
         rs.appendChild(box);
       });
       root.appendChild(rs);
+    }
+
+    /* AI second opinion (only when the AI reader worked) */
+    var jd = r.judge;
+    if (jd && jd.ok){
+      var js = section("A second opinion from an AI reader");
+      js.appendChild(el("p","hint","Your score comes from the rules checks. These comments come from an AI reader that saw your CV with your name, email, phone and links removed. It can be wrong, so use your own judgement."));
+      var jst = Array.isArray(jd.strengths) ? jd.strengths : [];
+      if (jst.length){
+        js.appendChild(el("h3",null,"What it liked"));
+        var jul = el("ul","plain");
+        jst.forEach(function(s2){ var li = el("li"); add(li, el("strong",null,pick(s2,["title"])), el("span","why",pick(s2,["reason"]))); jul.appendChild(li); });
+        js.appendChild(jul);
+      }
+      var jfx = Array.isArray(jd.fixes) ? jd.fixes : [];
+      if (jfx.length){
+        var h3 = el("h3",null,"What it would change first"); h3.style.marginTop = "14px"; js.appendChild(h3);
+        var jol = el("ol"); jol.style.paddingLeft = "20px"; jol.style.margin = "0";
+        jfx.forEach(function(x){ var li = el("li",null,pick(x,["text"])); li.style.padding = "4px 0"; jol.appendChild(li); });
+        js.appendChild(jol);
+      }
+      var jrw = Array.isArray(jd.rewrites) ? jd.rewrites : [];
+      jrw.forEach(function(w){
+        var box = el("div","rw"); box.style.marginTop = "12px";
+        add(box, el("div","tag","Your bullet"), el("p",null,pick(w,["original"])),
+                 el("div","tag","AI suggestion"), el("p","new",pick(w,["rewrite"])));
+        var nt2 = pick(w,["note"]); if (nt2) box.appendChild(el("p","hint",nt2));
+        js.appendChild(box);
+      });
+      root.appendChild(js);
     }
 
     /* 7. blurred distinction questions */

@@ -185,7 +185,7 @@ def handle_score(content_type, content_length, read_body, cookie_header, ip, sto
         target = fields.get("target", "").strip().lower()
         target = target if target in TARGETS and target != "not sure" else None
         name, data = files["file"]
-        report = score_file(name, data, target)       # in memory only, nothing written to disk
+        report = score_file(name, data, target, judge=True)   # in memory only, nothing written to disk
         del data, body, files                          # file is gone once scored
         record_use(store, device_id, ip)
         return 200, {"ok": True, "result": public_report(report), "uploads_left_today": None if left is None else max(left - 1, 0),

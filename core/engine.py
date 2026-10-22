@@ -8,18 +8,24 @@ from .reader import CVReadError, read_document
 from .rules import score_rules
 
 
-def score_text(text, pages=1, target=None, pages_estimated=False, links=None):
+def score_text(text, pages=1, target=None, pages_estimated=False, links=None, judge=False):
     t0 = time.perf_counter()
     facts = check_cv(text, pages, pages_estimated, links)
     report = score_rules(facts, target)
+    if judge:                                   # step 7: AI second opinion. Any failure leaves the rules-only result as it is
+        try:
+            from .judge import attach_judge, judge_cv
+            attach_judge(report, judge_cv(facts, None if report["target"] == "none" else report["target"]))
+        except Exception:
+            report["judge"] = {"ok": False, "reason": "error"}
     report["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
-    report["facts"] = {k: v for k, v in facts.items() if k not in ("bullets", "summary_text")}
+    report["facts"] = {k: v for k, v in facts.items() if k not in ("bullets", "summary_text", "name_line", "skills_text")}
     return report
 
 
-def score_file(name, data, target=None, allow_txt=False):
+def score_file(name, data, target=None, allow_txt=False, judge=False):
     doc = read_document(name, data, allow_txt=allow_txt)
-    return score_text(doc["text"], doc["pages"], target, doc["pages_estimated"], doc.get("links"))
+    return score_text(doc["text"], doc["pages"], target, doc["pages_estimated"], doc.get("links"), judge=judge)
 
 
 def print_report(r):
