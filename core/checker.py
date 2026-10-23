@@ -89,6 +89,27 @@ def _header_like(line):
     return "|" in s or bool(ENTRY_END_RE.search(s)) or (len(s.split()) <= 4 and not s.endswith((".", ";", ",")))
 
 
+DATE_RANGE_RE = re.compile(r"(?:(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*)?(?:19|20)\d{2}\s*[-\u2013\u2014]+\s*(?:(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*)?(?:(?:19|20)\d{2}|present|current)|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*[-\u2013\u2014]+\s*(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*(?:19|20)\d{2}", re.I)
+
+
+def _is_header_line(s):
+    return "|" in s or bool(DATE_RANGE_RE.search(s)) or bool(ENTRY_END_RE.search(s))
+
+
+def _line_bullets(body_lines):
+    """Fallback when the PDF lost its bullet marks: skip role/date lines, and join wrapped lines (a line that starts in lower case)."""
+    out = []
+    for i, l in enumerate(body_lines):
+        nxt = body_lines[i + 1] if i + 1 < len(body_lines) else ""
+        if _is_header_line(l) or (len(nxt.split()) <= 6 and DATE_RANGE_RE.search(nxt)):   # a title sitting right above its dates
+            continue
+        if out and l[:1].islower():
+            out[-1] += " " + l
+        elif len(l.split()) >= 6:
+            out.append(l)
+    return out
+
+
 def _email_quality(email):
     local = email.split("@")[0].lower()
     if re.search(r"\d{4,}", local) or any(w in local for w in CASUAL_EMAIL_WORDS):
@@ -151,7 +172,7 @@ def check_cv(text, pages=1, pages_estimated=False, links=None):
     if len(markers) >= 3:
         bullets, source = markers, "markers"
     else:
-        bullets, source = [l for l in body_lines if len(l.split()) >= 6], "lines"
+        bullets, source = _line_bullets(body_lines), "lines"
     paragraphs = [t for k, t in items if k == "text" and len(t.split()) > 35]
     f["bullets"] = bullets
     f["bullet_total"] = len(bullets)

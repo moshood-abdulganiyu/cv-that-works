@@ -19,7 +19,14 @@ class CVReadError(Exception):
 def _tidy(text):
     text = text.replace("\r", "")
     text = re.sub(r"[\uf0b7\uf0a7\uf076\uf0d8\uf0fc]", "•", text)   # bullet glyphs PDF tools often produce
+    text = re.sub(r"[\uf000-\uf0ff]", "\u2022", text)             # any other symbol-font bullet glyph
     text = re.sub(r"[ \t]+", " ", text)
+    # PDF tools sometimes glue a date onto the title before it, or the next line onto the date. Put the line breaks back.
+    mon = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*"
+    text = re.sub(r"(?<=[a-z)])(?=" + mon + r"\.?\s*(?:\d{4}|[-\u2013\u2014]))", "\n", text)
+    text = re.sub(r"(?<=[a-z)])(?=(?:19|20)\d{2}\s*[-\u2013\u2014])", "\n", text)
+    text = re.sub(r"(?<=\d{4})(?=[A-Z][a-z])", "\n", text)
+    text = re.sub(r"(?<=Present)(?=[A-Z])|(?<=Current)(?=[A-Z])", "\n", text)
     return "\n".join(line.strip() for line in text.split("\n")).strip()
 
 

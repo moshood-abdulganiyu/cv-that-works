@@ -25,7 +25,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 /* ---------- top bar and hero ---------- */
 .topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 1px 8px rgba(0,0,0,.05);padding-top:env(safe-area-inset-top,0px)}
 .topbar-in{max-width:40rem;margin:0 auto;height:64px;padding:0 var(--gap);display:flex;align-items:center;gap:.75rem}
-.topbar img{height:28px;width:auto}
+.topbar img{height:84px;width:auto;max-width:45vw;object-fit:contain}
 .brand{display:flex;flex-direction:column;min-width:0}
 .brand b{font:700 20px/28px var(--head);letter-spacing:-.01em;white-space:nowrap}
 .brand span{font:600 12px/16px var(--body);letter-spacing:.02em;color:var(--secondary)}
