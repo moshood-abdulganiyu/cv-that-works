@@ -131,7 +131,14 @@ footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;te
           <div class="row">
             <label class="consent" for="consent">
               <input id="consent" name="consent" type="checkbox">
-              <span>I agree that my CV is read in memory, scored and then deleted, and that this tool saves nothing about me. To judge the quality of the writing, the CV text is sent to an outside AI service (Google Gemini) with my name, email, phone number and links removed. Free AI services may keep this text and let people at the provider read it. Details like my school, clubs and town stay in the text, so I will take out anything I do not want shared, including my home address.</span>
+              <span>I agree that my CV is read in memory, scored and then deleted, and that this tool saves nothing about me unless I tick the optional box below. To judge the quality of the writing, the CV text is sent to an outside AI service (Google Gemini) with my name, email, phone number and links removed. Free AI services may keep this text and let people at the provider read it. Details like my school, clubs and town stay in the text, so I will take out anything I do not want shared, including my home address.</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="consent" for="save">
+              <input id="save" name="save" type="checkbox">
+              <span>Optional: I agree that the CV text, with my name, email, phone number and links removed, is saved along with my scores. The trainer reads saved CVs to check the scoring, and they may later be used to train a scoring model. My school, clubs and town stay in the saved text. Because my name is removed, I will not be able to ask for it to be taken out later.</span>
             </label>
           </div>
 
@@ -235,6 +242,7 @@ footer{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;te
     fd.append("file", f);
     fd.append("target", $("target").value);
     fd.append("consent", "true");
+    if ($("save").checked){ fd.append("save", "on"); }
 
     busy = true;
     var btn = $("go");
