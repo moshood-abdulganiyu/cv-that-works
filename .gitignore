@@ -5,3 +5,5 @@ __pycache__/
 reports/
 *.pdf
 !tests/samples/*.pdf
+train/export.json
+train/model_v1.json
