@@ -92,7 +92,7 @@ def run():
         assert r["judge"]["ok"] is False and r["score"] > 0
     finally:
         judge.judge_cv = keep
-    # 8. the report keeps the score from the rules and adds the AI section
+    # 8. with the AI on, the two readers are blended; the rules-only score is untouched
     judge._cooldown.clear(); call, calls = fake(GOOD); judge.CALLER = call
     import os
     os.environ.update(ENV)
@@ -101,7 +101,11 @@ def run():
     finally:
         for k in ENV: os.environ.pop(k, None)
     base = score_text(CV, 1, "internship", judge=False)
-    assert r["score"] == base["score"] and r["mode"] == "rules_with_ai_comments" and r["judge"]["ok"]
+    assert r["judge"]["ok"] and r["mode"] == "blended" and r["blend_version"] == "blend-v1.0"
+    assert base["mode"] == "rules_only" and 0 <= r["score"] <= 100
+    lang = r["categories"]["language"]
+    assert abs(lang["points"] - (lang["rules_points"] + r["judge"]["scores"]["language"])) < 0.11
+    assert r["categories"]["sections"]["points"] == base["categories"]["sections"]["points"]
     assert "name_line" not in r["facts"] and "skills_text" not in r["facts"]
     print("ok: redaction, judge checks, backup model and fallbacks all behave")
 

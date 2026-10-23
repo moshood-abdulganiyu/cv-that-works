@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CV That Works: trainer review</title>
+<style>
+:root{--navy:#275A91;--orange:#FE9B02;--pale:#E2EDFF;--ink:#14243a;--muted:#5b6b80;--line:#c9d6e8;--bg:#ffffff;--warn:#b45309;--green:#2f8a4a;--red:#b42318}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--pale)}
+header{background:var(--navy);color:#fff;padding:14px 20px}
+header h1{margin:0;font-size:20px}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+button{font:600 15px inherit;font-family:inherit;border-radius:8px;padding:9px 14px;cursor:pointer;border:2px solid var(--navy);background:var(--navy);color:#fff}
+button.alt{background:#fff;color:var(--navy)}
+button.danger{background:#fff;color:var(--red);border-color:var(--red)}
+input[type=password],input[type=number],textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px}
+input[type=password]{width:260px;max-width:100%}
+input[type=number]{width:80px}
+textarea{width:100%;min-height:60px}
+.msg{margin:8px 0;color:var(--muted)}
+.msg.bad{color:var(--red)}
+.grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:16px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.row{padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer;background:#fff}
+.row:hover,.row.on{border-color:var(--navy);background:var(--pale)}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:1px 8px;margin-left:6px}
+.tag.wait{background:#fff1d6;color:var(--warn)}
+.tag.done{background:#dff3e5;color:var(--green)}
+table{border-collapse:collapse;width:100%;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-size:15px}
+th{color:var(--muted);font-weight:600}
+pre{white-space:pre-wrap;word-break:break-word;background:#f6f9fe;border:1px solid var(--line);border-radius:8px;padding:12px;max-height:340px;overflow:auto;font:14px/1.5 ui-monospace,Consolas,monospace}
+.flag{color:var(--warn);font-weight:700}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<header><h1>CV That Works: trainer review</h1></header>
+<main>
+  <div class="card" id="login">
+    <label for="code"><strong>Review code</strong></label><br>
+    <div class="bar" style="margin-top:6px">
+      <input id="code" type="password" autocomplete="off" placeholder="The code you set in Vercel">
+      <button id="open" type="button">Open</button>
+    </div>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+
+  <div id="app" hidden>
+    <div class="card">
+      <div class="bar">
+        <span id="counts"></span>
+        <button class="alt" id="refresh" type="button">Refresh</button>
+        <button class="alt" id="export" type="button">Download my corrections (JSON)</button>
+      </div>
+      <div class="msg" id="appMsg"></div>
+    </div>
+    <div class="grid">
+      <div id="list"></div>
+      <div id="detail"><div class="card msg">Choose a CV from the list. CVs the two readers disagreed on come first.</div></div>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var token = "", current = null;
+  function $(id){ return document.getElementById(id); }
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+  function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+  function api(method, path, body){
+    var opt = {method: method, headers: {"X-Review-Token": token}};
+    if (body){ opt.headers["Content-Type"] = "application/json"; opt.body = JSON.stringify(body); }
+    return fetch(path, opt).then(function(r){ return r.json().then(function(j){ return {status: r.status, json: j}; }); });
+  }
+  function say(id, text, bad){ var m = $(id); m.textContent = text || ""; m.className = "msg" + (bad ? " bad" : ""); }
+
+  function login(){
+    token = $("code").value.trim();
+    if (!token){ say("loginMsg", "Type your review code.", true); return; }
+    say("loginMsg", "Checking...");
+    api("GET", "/api/review/list").then(function(r){
+      if (r.status !== 200){ say("loginMsg", r.json.error || "Could not open.", true); return; }
+      try { sessionStorage.setItem("cvtw_review", token); } catch(e){}
+      $("login").hidden = true; $("app").hidden = false;
+      showList(r.json);
+    }).catch(function(){ say("loginMsg", "Could not reach the server. Check your connection.", true); });
+  }
+
+  function load(){
+    api("GET", "/api/review/list").then(function(r){
+      if (r.status !== 200){ say("appMsg", r.json.error || "Could not load.", true); return; }
+      say("appMsg", ""); showList(r.json);
+    });
+  }
+
+  function showList(d){
+    var c = d.counts;
+    $("counts").textContent = c.saved + " saved, " + c.waiting + " waiting for you, " + c.corrected + " corrected";
+    var box = $("list"); clear(box);
+    if (!d.rows.length){ box.appendChild(el("div", "card msg", "Nothing saved yet. CVs appear here when a student ticks the save box.")); return; }
+    d.rows.forEach(function(r){
+      var row = el("div", "row" + (current === r.id ? " on" : ""));
+      var top = el("div", "", r.saved_at + "  |  " + r.score + " " + r.band);
+      if (r.flagged) top.appendChild(el("span", "tag wait", "waiting"));
+      if (r.corrected) top.appendChild(el("span", "tag done", "corrected"));
+      row.appendChild(top);
+      row.appendChild(el("div", "msg", "Target: " + r.target + (r.less_certain.length ? "  |  less certain: " + r.less_certain.join(", ") : "")));
+      row.addEventListener("click", function(){ openItem(r.id); });
+      box.appendChild(row);
+    });
+  }
+
+  function openItem(id){
+    current = id;
+    api("GET", "/api/review/item?id=" + encodeURIComponent(id)).then(function(r){
+      if (r.status !== 200){ say("appMsg", r.json.error || "Could not open this CV.", true); return; }
+      renderItem(r.json.record); load();
+    });
+  }
+
+  function renderItem(rec){
+    var box = $("detail"); clear(box);
+    var card = el("div", "card"); box.appendChild(card);
+    card.appendChild(el("h2", "", "Tool score " + rec.score + " (" + rec.band + ")"));
+    card.appendChild(el("div", "msg", "Target: " + rec.target + "  |  saved " + rec.saved_at + "  |  " + rec.rubric_version + " / " + (rec.blend_version || "no blend")));
+    card.appendChild(el("h3", "", "Your score for each category"));
+    var t = el("table"), hr = el("tr");
+    ["Category", "Out of", "Rules", "AI", "Tool gave", "Your score"].forEach(function(h){ hr.appendChild(el("th", "", h)); });
+    t.appendChild(hr);
+    var inputs = {};
+    Object.keys(rec.categories).forEach(function(k){
+      var c = rec.categories[k], tr = el("tr");
+      var name = el("td", "", k); if (c.less_certain){ name.appendChild(el("span", "flag", "  less certain")); }
+      tr.appendChild(name);
+      tr.appendChild(el("td", "", String(c.max)));
+      tr.appendChild(el("td", "", String(c.rules)));
+      tr.appendChild(el("td", "", c.judge === null || c.judge === undefined ? "none" : String(c.judge)));
+      tr.appendChild(el("td", "", String(c.final)));
+      var td = el("td"), inp = el("input"); inp.type = "number"; inp.min = 0; inp.max = c.max; inp.step = "0.5";
+      inp.value = rec.trainer ? rec.trainer.scores[k] : c.final;
+      inputs[k] = inp; td.appendChild(inp); tr.appendChild(td); t.appendChild(tr);
+    });
+    card.appendChild(t);
+    var note = el("textarea"); note.placeholder = "Optional note: why you changed a score"; note.value = rec.trainer ? rec.trainer.note : "";
+    card.appendChild(note);
+    var bar = el("div", "bar"); bar.style.marginTop = "10px";
+    var save = el("button", "", rec.trainer ? "Update my correction" : "Save my correction");
+    var del = el("button", "danger", "Delete this CV");
+    bar.appendChild(save); bar.appendChild(del); card.appendChild(bar);
+    var msg = el("div", "msg"); card.appendChild(msg);
+    save.addEventListener("click", function(){
+      var scores = {};
+      for (var k in inputs){ scores[k] = inputs[k].value; }
+      api("POST", "/api/review/correct", {id: rec.id, scores: scores, note: note.value}).then(function(r){
+        if (r.status !== 200){ msg.textContent = r.json.error || "Could not save."; msg.className = "msg bad"; return; }
+        msg.textContent = "Saved. Your total for this CV: " + r.json.trainer.score + "."; msg.className = "msg"; load();
+      });
+    });
+    del.addEventListener("click", function(){
+      if (!confirm("Delete this CV from the review store? This cannot be undone.")) return;
+      api("POST", "/api/review/delete", {id: rec.id}).then(function(r){
+        if (r.status !== 200){ msg.textContent = r.json.error || "Could not delete."; msg.className = "msg bad"; return; }
+        current = null; clear(box); box.appendChild(el("div", "card msg", "Deleted.")); load();
+      });
+    });
+    var p = el("div", "card"); box.appendChild(p);
+    p.appendChild(el("h3", "", "CV text (name, email, phone and links already removed)"));
+    var pre = el("pre"); pre.textContent = rec.text; p.appendChild(pre);
+    if (rec.judge && rec.judge.ok && rec.judge.reasons){
+      p.appendChild(el("h3", "", "What the AI reader said"));
+      var ul = el("ul");
+      Object.keys(rec.judge.reasons).forEach(function(k){ ul.appendChild(el("li", "", k + ": " + rec.judge.reasons[k])); });
+      p.appendChild(ul);
+    }
+  }
+
+  function exportJson(){
+    api("GET", "/api/review/export").then(function(r){
+      if (r.status !== 200){ say("appMsg", r.json.error || "Could not export.", true); return; }
+      var blob = new Blob([JSON.stringify(r.json, null, 2)], {type: "application/json"});
+      var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = "cv-corrections-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(a); a.click(); a.remove();
+      say("appMsg", r.json.count + " corrected CV(s) downloaded. Keep this file private.");
+    });
+  }
+
+  $("open").addEventListener("click", login);
+  $("code").addEventListener("keydown", function(e){ if (e.key === "Enter") login(); });
+  $("refresh").addEventListener("click", load);
+  $("export").addEventListener("click", exportJson);
+  try { var saved = sessionStorage.getItem("cvtw_review"); if (saved){ $("code").value = saved; } } catch(e){}
+})();
+</script>
+</body>
+</html>

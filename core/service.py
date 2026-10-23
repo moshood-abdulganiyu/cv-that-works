@@ -1,6 +1,6 @@
 """Step 4 service layer: everything the API needs that is not scoring.
 Kept out of api/score.py so it can be tested locally without Vercel.
-Rules: files stay in memory, nothing about a student is stored in phase 1, counters hold no CV content."""
+Rules: files stay in memory. Nothing about a student is stored unless they tick the save box (step 8), and then only redacted text, scores and voter outputs. Counters hold no CV content."""
 import copy
 import hashlib
 import json
@@ -13,6 +13,7 @@ from email import message_from_bytes, policy
 
 from .engine import score_file
 from .reader import CVReadError
+from .review import get_review_store, save_for_review
 from .rubric import MAX_FILE_BYTES, TARGETS
 
 BODY_OVERHEAD = 64 * 1024            # room for multipart framing around the file
@@ -159,7 +160,7 @@ def public_report(report):
 
 
 # ---------- the one request handler used by api/score.py ----------
-def handle_score(content_type, content_length, read_body, cookie_header, ip, store=None):
+def handle_score(content_type, content_length, read_body, cookie_header, ip, store=None, review_store=None):
     """Return (status, payload, new_device_id_or_None). Never raises."""
     store = store or get_store()
     device_id = None
@@ -185,11 +186,18 @@ def handle_score(content_type, content_length, read_body, cookie_header, ip, sto
         target = fields.get("target", "").strip().lower()
         target = target if target in TARGETS and target != "not sure" else None
         name, data = files["file"]
-        report = score_file(name, data, target, judge=True)   # in memory only, nothing written to disk
+        save = fields.get("save", "").lower() in ("true", "on", "1", "yes")   # second tickbox, separate from consent
+        report = score_file(name, data, target, judge=True, keep_text=save)   # in memory only, nothing written to disk
+        saved_text = report.pop("_saved_text", None)   # never goes to the browser
         del data, body, files                          # file is gone once scored
         record_use(store, device_id, ip)
+        stored = False
+        if save and saved_text:   # redacted text, scores and voter outputs only. A failure here never blocks the result
+            stored = save_for_review(report, saved_text, review_store if review_store is not None else get_review_store())
+            if stored:
+                report.setdefault("notices", []).append("Saved for the trainer, with your name, email, phone and links removed. Thank you for helping improve this tool.")
         return 200, {"ok": True, "result": public_report(report), "uploads_left_today": None if left is None else max(left - 1, 0),
-                     "stored": False}, new_cookie
+                     "stored": stored}, new_cookie
     except ApiError as e:
         return e.status, {"ok": False, "error": {"code": e.code, "message": e.message}}, new_cookie
     except CVReadError as e:
