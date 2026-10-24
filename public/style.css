@@ -50,7 +50,9 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 @media (min-width:36rem){.brand{display:flex}}
 .hero{background:var(--navy);color:#fff;padding:2rem var(--gap) 2.25rem}
 .hero-in{max-width:40rem;margin:0 auto;text-align:center}
-.eyebrow{display:flex;flex-direction:column;align-items:center;gap:.2rem;font:700 12px/16px var(--body);letter-spacing:.2em;text-transform:uppercase;opacity:.92}
+.eyebrow{display:flex;flex-direction:column;align-items:center;gap:.25rem}
+.eyebrow span:first-child{font:800 clamp(17px,5vw,28px)/1.2 var(--head);letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.eyebrow span:last-child{font:italic 500 18px/1.2 "Playfair Display",Georgia,serif;letter-spacing:.04em;color:#ffddb9}
 .hero h1{font:800 clamp(34px,9.5vw,50px)/1.1 "Playfair Display",Georgia,"Times New Roman",serif;letter-spacing:.01em;color:var(--gold);margin:.6rem 0 .75rem}
 .hero p.lead{font-size:18px;line-height:28px;font-style:italic;max-width:34rem;margin:0 auto}
 .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.25rem}
