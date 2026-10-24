@@ -49,11 +49,11 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .themebtn svg.i{width:22px;height:22px}
 @media (min-width:36rem){.brand{display:flex}}
 .hero{background:var(--navy);color:#fff;padding:2rem var(--gap) 2.25rem}
-.hero-in{max-width:40rem;margin:0 auto}
-.eyebrow{font:700 12px/16px var(--body);letter-spacing:.2em;text-transform:uppercase;opacity:.92}
-.hero h1{font:800 clamp(34px,9vw,44px)/1.1 var(--head);letter-spacing:-.02em;color:var(--gold);margin:.6rem 0 .75rem}
-.hero p.lead{font-size:18px;line-height:28px;max-width:34rem}
-.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.hero-in{max-width:40rem;margin:0 auto;text-align:center}
+.eyebrow{display:flex;flex-direction:column;align-items:center;gap:.2rem;font:700 12px/16px var(--body);letter-spacing:.2em;text-transform:uppercase;opacity:.92}
+.hero h1{font:800 clamp(34px,9.5vw,50px)/1.1 "Playfair Display",Georgia,"Times New Roman",serif;letter-spacing:.01em;color:var(--gold);margin:.6rem 0 .75rem}
+.hero p.lead{font-size:18px;line-height:28px;font-style:italic;max-width:34rem;margin:0 auto}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.25rem}
 .badges li{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;border-radius:999px;background:rgba(255,255,255,.14);font:600 14px/20px var(--body)}
 .badges svg.i{width:16px;height:16px;color:var(--gold)}
 
