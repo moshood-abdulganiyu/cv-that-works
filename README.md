@@ -1,15 +1,40 @@
 # CV That Works: CV scoring tool
 
-A free web tool for first-time CVs, built for Brainstorm Group (BSG) CV training. A student uploads a CV (PDF or DOCX), picks a target, and gets a score out of 100, a band, what is working, and the top fixes. It supports the session "CV That Works".
+[![Live site](https://img.shields.io/badge/live-cv--that--works.vercel.app-1f4a80)](https://cv-that-works.vercel.app)
 
-Live site: https://cv-that-works.vercel.app
+A free web tool for first-time CVs, built for Brainstorm Group (BSG) CV training. An undergraduate uploads a CV (PDF or DOCX), picks a target, and gets a score out of 100, a band, what is working, and the top fixes. It supports the session "CV That Works".
+
+**Live site:** https://cv-that-works.vercel.app
 
 Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan. The Vercel free plan is for non-commercial use, which fits a free class. If the class ever becomes paid, revisit hosting.
 
+## Contents
+- [Current status](#current-status)
+- [What a student sees](#what-a-student-sees)
+- [Scoring](#scoring-rubric-cv-rubric-v10)
+- [How the voters work](#how-the-voters-work)
+- [Privacy](#privacy)
+- [Layout](#layout)
+- [API](#api)
+- [Settings](#settings-vercel-settings-environment-variables)
+- [Trainer review page](#trainer-review-page)
+- [Training the model (step 9)](#training-the-model-step-9)
+- [Run and test locally](#run-and-test-locally)
+- [Deploy](#deploy)
+- [Free-tier limits](#free-tier-limits-checked-october-2026-re-check-before-a-class-pilot)
+- [Roadmap](#roadmap)
+- [Rules for the build](#rules-for-the-build)
+
+## Current status
+- **Live and open to students** with two voters: the rules code and the Gemini AI judge, blended into one score.
+- **Upload limit:** 5 per device per day while the class uses it (the code default is 3, set in Vercel).
+- **Third voter (trained model):** not added yet. It needs real CVs that the trainer has corrected, and the evaluation notebook refuses to recommend a model below 50 corrected CVs. Treat anything under about 100 as an experiment. Training on made-up CVs is not allowed.
+- **Data keeps arriving:** students who tick the optional save box add redacted CVs to the review store, ready for the trainer to correct.
+
 ## What a student sees
-- Upload page: file, target (internship, scholarship, graduate study, leadership, not sure), a consent tickbox, an optional save tickbox, one "Score my CV" button.
-- Result screen: total score, band, score for each category, three things working, top three fixes with the points each would gain, missing sections, rewrites of the two weakest bullets with [__] placeholders, one next step, and a line saying only numbers the student can defend should stay on the CV.
-- Re-upload shows the previous score next to the new one.
+- **Upload page:** file, target (internship, scholarship, graduate study, leadership, not sure), a consent tickbox, an optional save tickbox, one "Score my CV" button. The button stays grey until a file is chosen and the consent box is ticked. A strip below shows how the 100 points are split.
+- **Result screen:** total score, band, score for each category, three things working, top three fixes with the points each would gain, missing sections, rewrites of the two weakest bullets with [__] placeholders, an AI second opinion, questions about lines that could be read two ways, one next step, and a line saying only numbers the student can defend should stay on the CV.
+- **Re-upload** shows the previous score next to the new one.
 - Categories where the two readers disagreed are marked "Less certain".
 
 ## Scoring (rubric `cv-rubric-v1.0`)
@@ -51,7 +76,7 @@ If the two voters differ by more than 30% of a category's points, the category i
 
 If the AI is unavailable or rate limited, the student still gets the rules-only score.
 
-A third voter, a small model trained on real CVs the trainer has corrected, is planned for phase 3. It is never trained on made-up CVs.
+A third voter, a small model trained on real CVs the trainer has corrected, is planned for phase 3. It will take the middle value of the three. It is never trained on made-up CVs.
 
 ## Privacy
 - Uploaded files are read in memory, scored and deleted. Nothing is written to disk.
@@ -64,7 +89,7 @@ A third voter, a small model trained on real CVs the trainer has corrected, is p
 ```
 app.py                Vercel entrypoint (plain WSGI). Routes: POST /api/score, GET /api/health, GET /, GET /review, /api/review/*
 core/rubric.py        weights, bands, word lists (change numbers here, bump the version)
-core/reader.py        PDF and DOCX reading, clear errors, reads link addresses
+core/reader.py        PDF and DOCX reading, clear errors, reads link addresses, repairs glued dates
 core/checker.py       the one shared checker that finds the facts
 core/rules.py         rules-only scoring, fixes, rewrites, flags
 core/redact.py        removes name, email, phone, links, handles, address lines before the AI sees text
@@ -73,8 +98,11 @@ core/blend.py         blends rules and judge into one score per category, marks 
 core/review.py        review store (Upstash), saving with consent, trainer endpoints
 core/engine.py        file in, report out
 core/service.py       multipart reading, consent, save box, per-device limits (Upstash), privacy strip
-public/index.html     student upload page and result screen (inline CSS and JavaScript)
+public/index.html     student upload page and result screen (markup and JavaScript)
+public/style.css      page styles (design from the Google Stitch export)
+public/logo.png       Brainstorm Group logo shown in the top bar
 public/review.html    trainer review page (needs the review code)
+train/                evaluation notebook for step 9. export.json and model_v1.json stay private (see .gitignore)
 tests/                ladder.py (builds the calibration CVs), test_smoke, test_api, test_no_summary,
                       test_judge, test_blend, test_review, test_routes, repeat_run
 docs/                 rubric_v1.md, step3_test_report.md, step4_deploy.md
@@ -82,9 +110,10 @@ vercel.json           excludes tests and docs from the deployed function
 requirements.txt      pypdf, python-docx (runtime only)
 requirements-dev.txt  adds reportlab (tests)
 ```
+Fonts (Inter and Plus Jakarta Sans) load from Google Fonts. Icons are built into the page, so there is no icon font to download.
 
 ## API
-**Score:** `POST /api/score`, multipart, same origin. Fields: `file` (PDF or DOCX, max 4 MB), `target`, `consent` (`true`), `save` (`on`, optional). Success: `{"ok": true, "result": {...}, "uploads_left_today": 2, "stored": false}`. `stored` is true only when the CV really reached the review store.
+**Score:** `POST /api/score`, multipart, same origin. Fields: `file` (PDF or DOCX, max 4 MB), `target`, `consent` (`true`), `save` (`on`, optional). Success: `{"ok": true, "result": {...}, "uploads_left_today": 4, "stored": false}`. `stored` is true only when the CV really reached the review store.
 
 Errors: `{"ok": false, "error": {"code", "message"}}`. Codes: `missing_consent`, `no_file`, `bad_request`, `too_large`, `empty_file`, `locked_pdf`, `corrupt`, `scanned_pdf`, `unsupported_type`, `limit_reached`, `server_error`.
 
@@ -100,13 +129,24 @@ Errors: `{"ok": false, "error": {"code", "message"}}`. Codes: `missing_consent`,
 | `AI_JUDGE` | Set to `off` to switch the AI off |
 | `REVIEW_TOKEN` | Code for the trainer page. At least 12 characters. Keep private |
 | `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Upstash connection (limit counters and saved CVs) |
-| `UPLOADS_PER_DEVICE_PER_DAY`, `UPLOADS_PER_IP_PER_DAY` | Upload limits (default 3 and 30) |
+| `UPLOADS_PER_DEVICE_PER_DAY`, `UPLOADS_PER_IP_PER_DAY` | Upload limits (code defaults 3 and 30; live value for the class: 5 per device) |
 | `LIMIT_SALT` | Optional. Salt for the hashed limit counters |
 
-New variables only apply on the next deployment, so push a change after editing them.
+New variables only apply on the next deployment, so push a change after editing them. An empty commit works: `git commit --allow-empty -m "apply settings"` then `git push`.
 
 ## Trainer review page
-Open `/review` and enter the review code. CVs the two readers disagreed on come first. Type your own score for each category, save, and download your corrections as JSON for training (step 9). Delete a CV from the same page.
+Open `/review` and enter the review code. CVs the two readers disagreed on come first. Type your own score for each category, save, and download your corrections as JSON for training (step 9). Delete a CV from the same page. Mark by your own judgment, not by copying the tool's numbers, or the model will only learn the tool's habits. Do not correct non-undergraduate CVs: the export contains corrected CVs only.
+
+## Training the model (step 9)
+Work on your own computer, never in a hosted notebook, because the export holds students' redacted CVs.
+
+1. Correct saved CVs at `/review` until you have enough. Under 50 the notebook will say "do not add". Around 100 is where a model becomes worth trusting.
+2. Download the export from `/api/review/export` and save it as `train/export.json`. It is git-ignored.
+3. Install once: `pip install jupyter pandas scikit-learn numpy`.
+4. Run `jupyter notebook`, open the notebook in `train/`, and run each cell from the top.
+5. The notebook rebuilds the rules counts with the same `core/checker.py` the live tool uses, tests a small model against simple guesses on CVs it never saw (average, rules-only, blended), and prints a verdict. It saves `train/model_v1.json` only if the verdict is to add the model.
+
+The model scores judged items only (bullets, summary, language, fit). If it does not beat the simple guesses, it is not added.
 
 ## Run and test locally
 ```
@@ -122,6 +162,8 @@ python -m tests.repeat_run     (needs a real Gemini key in that window only, abo
 ```
 Score one file from the command line: `python -m core.engine path\to\cv.pdf internship`
 
+Re-run the calibration tests after any change to `core/checker.py`, `core/reader.py` or `core/rubric.py`.
+
 ## Deploy
 Vercel deploys on every push to `main`.
 ```
@@ -129,19 +171,20 @@ git add -A
 git commit -m "describe the change"
 git push
 ```
-The "Redeploy" button rebuilds the old commit, so push a change instead. After a deploy, check `/api/health`: `review_database` and `review_code_set` should both be `true`.
+The "Redeploy" button rebuilds the old commit, so push a change instead. After a deploy, check `/api/health`: `review_database` and `review_code_set` should both be `true`, and `/style.css` should load.
 
 ## Free-tier limits (checked October 2026, re-check before a class pilot)
 - Vercel Hobby: free, non-commercial. Confirm the function-call limit on the Usage page.
-- Upstash free: 256 MB and 500,000 commands a month. About 6 commands per score.
-- Gemini free: Flash-Lite about 10 requests a minute and 500 a day per project. Free-tier prompts may be used by Google and read by reviewers.
+- Upstash free: 256 MB and 500,000 commands a month. About 6 commands per score and about 3 more per saved CV.
+- Gemini free: Flash-Lite about 10 requests a minute and 500 a day per project. Free-tier prompts may be used by Google and read by reviewers. When a busy class hits the limit, students get the rules-only score and the screen says so.
 
 ## Roadmap
 | Phase | Steps | Status |
 |---|---|---|
 | 1 Rules-only tool | 1 to 6 | Done and live |
-| 2 AI judge | 7 AI judge, 8 blending and review | Built. Live save check being confirmed |
-| 3 Trained model | 9 collect corrected CVs and train, 10 add the model as the third voter | Next |
+| 2 AI judge | 7 AI judge, 8 blending and review | Done and live |
+| 3 Trained model | 9 collect corrected CVs and train | In progress: collecting data, notebook ready |
+| 3 Trained model | 10 add the model as the third voter, weak-spots view | Not started |
 
 ## Rules for the build
 - Never invent metrics, dates, roles or skills. Use [__] placeholders.
