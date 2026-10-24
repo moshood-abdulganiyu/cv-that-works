@@ -28,12 +28,13 @@ Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan
 ## Current status
 - **Live and open to students** with two voters: the rules code and the Gemini AI judge, blended into one score.
 - **Upload limit:** 7 per device per day while the class uses it (the code default is 3, set in Vercel).
+- **One list of advice:** the rules and the AI no longer give two separate fix lists. They are merged into one (see [Advice merge](#advice-merge)).
 - **Third voter (trained model):** not added yet. It needs real CVs that the trainer has corrected, and the evaluation notebook refuses to recommend a model below 50 corrected CVs. Treat anything under about 100 as an experiment. Training on made-up CVs is not allowed.
 - **Data keeps arriving:** students who tick the optional save box add redacted CVs to the review store, ready for the trainer to correct.
 
 ## What a student sees
 - **Upload page:** file, target (internship, scholarship, graduate study, leadership, not sure), a consent tickbox, an optional save tickbox, one "Score my CV" button. The button stays grey until a file is chosen and the consent box is ticked. A strip below shows how the 100 points are split.
-- **Result screen:** total score, band, score for each category, three things working, top three fixes with the points each would gain, missing sections, rewrites of the two weakest bullets with [__] placeholders, an AI second opinion, questions about lines that could be read two ways, one next step, and a line saying only numbers the student can defend should stay on the CV.
+- **Result screen:** total score, band, score for each category, three things working, top three fixes with the points each would gain, missing sections, rewrites of the two weakest bullets with [__] placeholders, what the AI reader liked, questions about lines that could be read two ways, one next step, and a line saying only numbers the student can defend should stay on the CV.
 - **Re-upload** shows the previous score next to the new one.
 - Categories where the two readers disagreed are marked "Less certain".
 
@@ -76,6 +77,18 @@ If the two voters differ by more than 30% of a category's points, the category i
 
 If the AI is unavailable or rate limited, the student still gets the rules-only score.
 
+### Advice merge
+The scores come from the blend above. The advice (fixes and rewrites) is merged separately in `core/blend.py` so students see one list, not two that sometimes disagree.
+
+| Part | Who writes it |
+|---|---|
+| Fixes for contact, sections, format, numbers and language | Rules. The AI cannot see contact details and does not count |
+| Fixes for bullets, summary and fit | AI, when it gave a fix for that category. Otherwise the rules fix stays |
+| Rewrites of the weakest bullets | AI, when it gave any. Otherwise the rules rewrites stay |
+| Points gain on each fix | Rules fixes: exact. AI fixes: an estimate (room left in the category, shared between its fixes, capped at 4) |
+
+The AI labels each fix with the category it improves. A fix without a valid label is ignored by the merge. If the AI is unavailable, students get the rules fixes and rewrites unchanged. Merging never changes the scores.
+
 A third voter, a small model trained on real CVs the trainer has corrected, is planned for phase 3. It will take the middle value of the three. It is never trained on made-up CVs.
 
 ## Privacy
@@ -93,8 +106,8 @@ core/reader.py        PDF and DOCX reading, clear errors, reads link addresses, 
 core/checker.py       the one shared checker that finds the facts
 core/rules.py         rules-only scoring, fixes, rewrites, flags
 core/redact.py        removes name, email, phone, links, handles, address lines before the AI sees text
-core/judge.py         Gemini judge: prompt, call, answer checks, backup model, fallback
-core/blend.py         blends rules and judge into one score per category, marks "less certain"
+core/judge.py         Gemini judge: prompt, call, answer checks (fixes carry a category label), backup model, fallback
+core/blend.py         blends rules and judge into one score per category, marks "less certain", merges the advice
 core/review.py        review store (Upstash), saving with consent, trainer endpoints
 core/engine.py        file in, report out
 core/service.py       multipart reading, consent, save box, per-device limits (Upstash), privacy strip
@@ -104,7 +117,7 @@ public/logo.png       Brainstorm Group logo shown in the top bar
 public/review.html    trainer review page (needs the review code)
 train/                evaluation notebook for step 9. export.json and model_v1.json stay private (see .gitignore)
 tests/                ladder.py (builds the calibration CVs), test_smoke, test_api, test_no_summary,
-                      test_judge, test_blend, test_review, test_routes, repeat_run
+                      test_judge, test_blend, test_merge, test_review, test_routes, repeat_run
 docs/                 rubric_v1.md, step3_test_report.md, step4_deploy.md
 vercel.json           excludes tests and docs from the deployed function
 requirements.txt      pypdf, python-docx (runtime only)
@@ -155,6 +168,7 @@ python -m tests.test_smoke
 python -m tests.test_no_summary
 python -m tests.test_judge
 python -m tests.test_blend
+python -m tests.test_merge
 python -m tests.test_review
 python -m tests.test_routes
 python -m tests.test_api
