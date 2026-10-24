@@ -98,6 +98,7 @@ A third voter, a small model trained on real CVs the trainer has corrected, is p
 - Nothing about a student is saved unless they tick the optional save box. Then only the redacted text, scores and the AI's output are stored, with no name, email, phone, links or file.
 - Never ask for or keep ID numbers, passwords or a home address.
 - Never commit student CVs, exports from the review page, API keys or the review code to GitHub.
+- The browser remembers the student's light or dark mode choice and, for the current session, their last score. Both stay on the student's own device. Nothing is sent to the server.
 
 ## Layout
 ```
@@ -125,7 +126,7 @@ vercel.json           excludes tests and docs from the deployed function
 requirements.txt      pypdf, python-docx (runtime only)
 requirements-dev.txt  adds reportlab (tests)
 ```
-Fonts (Inter and Plus Jakarta Sans) load from Google Fonts. Icons are built into the page, so there is no icon font to download.
+Fonts (Inter, Plus Jakarta Sans and Playfair Display for the title) load from Google Fonts. Icons are built into the page, so there is no icon font to download.
 
 ## API
 **Score:** `POST /api/score`, multipart, same origin. Fields: `file` (PDF or DOCX, max 4 MB), `target`, `consent` (`true`), `save` (`on`, optional). Success: `{"ok": true, "result": {...}, "uploads_left_today": 4, "stored": false}`. `stored` is true only when the CV really reached the review store.
