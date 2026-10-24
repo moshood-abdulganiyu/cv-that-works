@@ -67,6 +67,7 @@ def blend_report(report):
     r["mode"] = "blended"
     r["blend_version"] = BLEND_VERSION
     _regain(r)
+    _merge_advice(r)
     _notices(r, less)
     return r
 
@@ -89,14 +90,51 @@ def _regain(r):
     order = {k: i for i, k in enumerate(MAX_POINTS)}
     fixes.sort(key=lambda x: (-x["gain"], order[x["category"]]))
     r["all_fixes"], r["fixes"] = fixes, fixes[:3]
+    _next_step(r)
+
+
+def _next_step(r):
+    fixes = r.get("all_fixes", [])
     if r["band"] != "Rebuild" and fixes:
         r["next_step"] = f"Make fix 1 ({fixes[0]['text'].split('.')[0]}), then upload again to see your new score."
     elif r["band"] != "Rebuild":
         r["next_step"] = "Tailor this CV to each opportunity you apply for."
 
 
+AI_OWNS = ("bullets", "summary", "fit")      # where the rules advice is generic and the AI reads the meaning
+
+
+def _merge_advice(r):
+    """One list of fixes, one set of rewrites. Rules own the facts (contact, sections, format, numbers, language).
+    The AI owns advice on bullets, summary and fit: when it gave a fix for one of those, it replaces the rules fix there.
+    The scores are not touched. If the AI gave nothing usable, the rules advice stays as it is."""
+    jd = r.get("judge") or {}
+    ai = [x for x in jd.get("fixes", []) if x.get("category") in AI_OWNS and x["category"] in r["categories"]]
+    if ai:
+        scale = 100 / 95 if r["target"] == "none" else 1.0
+        owned = {x["category"] for x in ai}
+        count = {}
+        for x in ai:
+            count[x["category"]] = count.get(x["category"], 0) + 1
+        fixes = [x for x in r.get("all_fixes", []) if x["category"] not in owned]
+        for x in ai:
+            c = r["categories"][x["category"]]
+            room = max(0.0, (c["max"] - c["points"]) * scale)
+            gain = round(min(room / count[x["category"]], 4.0), 1)   # an estimate: room left, shared between that category's fixes, capped at 4
+            if gain > 0.05:
+                fixes.append({"category": x["category"], "text": x["text"], "gain": gain, "source": "ai"})
+        order = {k: i for i, k in enumerate(MAX_POINTS)}
+        fixes.sort(key=lambda x: (-x["gain"], order[x["category"]]))
+        r["all_fixes"], r["fixes"] = fixes, fixes[:3]
+        _next_step(r)
+    rw = [{"original": w.get("original", ""), "rewrite": w.get("rewrite", ""), "note": w.get("note", "")}
+          for w in jd.get("rewrites", []) if w.get("original") and w.get("rewrite")]
+    if rw:
+        r["rewrites"] = rw[:2]
+
+
 def _notices(r, less):
-    keep = [n for n in r.get("notices", []) if not n.startswith("Checked by rules only")]
+    keep = [n for n in r.get("notices", []) if not n.startswith(("Checked by rules only", "Your score comes from the rules checks"))]
     keep.insert(0, "Scored by two readers together: a rules check and an AI reader.")
     if less:
         names = ", ".join(r["categories"][k]["label"] for k in less)

@@ -36,7 +36,7 @@
 
 <header class="topbar">
   <div class="topbar-in">
-    <img src="/logo.jpg" alt="Brainstorm Group" onerror="this.remove()">
+    <img src="/logo.png" alt="Brainstorm Group" onerror="this.remove()">
     <div class="brand"><b>CV That Works</b><span>A Student Support Project by Brainstorm Group</span></div>
   </div>
 </header>
@@ -455,6 +455,7 @@
     /* AI second opinion (only when the AI reader worked) */
     var jd = r.judge;
     if (jd && jd.ok){
+      var merged = r.mode === "blended";      /* fixes and rewrites are already merged into the main lists */
       var js = card("A second opinion from an AI reader", "info");
       js.appendChild(el("p","muted","These comments come from an AI reader that saw your CV with your name, email, phone and links removed. It can be wrong, so use your own judgement."));
       var jst = Array.isArray(jd.strengths) ? jd.strengths : [];
@@ -469,7 +470,7 @@
         js.appendChild(jl);
       }
       var jfx = Array.isArray(jd.fixes) ? jd.fixes : [];
-      if (jfx.length){
+      if (jfx.length && !merged){
         var h2 = el("h3","sub","What it would change first"); h2.style.margin = ".9rem 0 .5rem"; js.appendChild(h2);
         var jl2 = el("div","list");
         jfx.forEach(function(x, i){
@@ -479,12 +480,12 @@
         js.appendChild(jl2);
       }
       var jrw = Array.isArray(jd.rewrites) ? jd.rewrites : [];
-      if (jrw.length){
+      if (jrw.length && !merged){
         var jw = el("div"); jw.style.marginTop = "1rem";
         jrw.forEach(function(w){ jw.appendChild(pairBlock(pick(w,["original"]), pick(w,["rewrite"]), pick(w,["note"]), "AI suggestion")); });
         js.appendChild(jw);
       }
-      root.appendChild(js);
+      if (jst.length || ((jfx.length || jrw.length) && !merged)) root.appendChild(js);
     }
 
     /* questions about lines that could be read two ways */

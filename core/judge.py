@@ -56,12 +56,13 @@ Writing rules for feedback:
 - Say plainly when a claim could be read two ways: cumulative vs yearly, participant vs leader, prototype vs deployed, ongoing vs completed, team vs individual, registered vs informal group, undergraduates vs graduates.
 - Only numbers a student can defend in an interview should stay on a CV.
 - Keep every text under 220 characters.
+- For each fix, "category" is the scored item it improves: one of bullets, summary, evidence, language or fit. Do not write fixes about contact details, page count or section headings. The rules code covers those.
 
 Reply with JSON only, exactly this shape:
 {"scores":{"evidence":0,"bullets":0,"summary":0,"language":0,"fit":null},
  "reasons":{"evidence":"","bullets":"","summary":"","language":"","fit":""},
  "strengths":[{"title":"","reason":""}],
- "fixes":[{"text":""}],
+ "fixes":[{"category":"","text":""}],
  "rewrites":[{"bullet_number":1,"rewrite":"","note":""}]}
 Give exactly 3 strengths and 3 fixes (fixes in priority order) and up to 2 rewrites of the weakest bullets, using the bullet numbers given."""
 
@@ -147,7 +148,14 @@ def validate(text, facts, bullets_sent, target):
     reasons = {k: _clean(v, 200) for k, v in (d.get("reasons") or {}).items() if k in JUDGED_MAX} if isinstance(d.get("reasons"), dict) else {}
     strengths = [{"title": _clean(x.get("title"), 60), "reason": _clean(x.get("reason"))}
                  for x in (d.get("strengths") or [])[:3] if isinstance(x, dict) and x.get("title")]
-    fixes = [{"text": _clean(x.get("text"), 240)} for x in (d.get("fixes") or [])[:3] if isinstance(x, dict) and x.get("text")]
+    fixes = []
+    for x in (d.get("fixes") or [])[:3]:
+        if isinstance(x, dict) and x.get("text"):
+            fx = {"text": _clean(x.get("text"), 240)}
+            cat = str(x.get("category") or "").strip().lower()
+            if cat in JUDGED_MAX:               # only kept when valid, so older answers without it still pass
+                fx["category"] = cat
+            fixes.append(fx)
     originals = facts.get("bullets", [])
     rewrites = []
     for x in (d.get("rewrites") or [])[:2]:
