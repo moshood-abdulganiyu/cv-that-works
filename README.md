@@ -27,7 +27,7 @@ Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan
 
 ## Current status
 - **Live and open to students** with two voters: the rules code and the Gemini AI judge, blended into one score.
-- **Upload limit:** 5 per device per day while the class uses it (the code default is 3, set in Vercel).
+- **Upload limit:** 7 per device per day while the class uses it (the code default is 3, set in Vercel).
 - **Third voter (trained model):** not added yet. It needs real CVs that the trainer has corrected, and the evaluation notebook refuses to recommend a model below 50 corrected CVs. Treat anything under about 100 as an experiment. Training on made-up CVs is not allowed.
 - **Data keeps arriving:** students who tick the optional save box add redacted CVs to the review store, ready for the trainer to correct.
 
@@ -129,7 +129,7 @@ Errors: `{"ok": false, "error": {"code", "message"}}`. Codes: `missing_consent`,
 | `AI_JUDGE` | Set to `off` to switch the AI off |
 | `REVIEW_TOKEN` | Code for the trainer page. At least 12 characters. Keep private |
 | `KV_REST_API_URL`, `KV_REST_API_TOKEN` | Upstash connection (limit counters and saved CVs) |
-| `UPLOADS_PER_DEVICE_PER_DAY`, `UPLOADS_PER_IP_PER_DAY` | Upload limits (code defaults 3 and 30; live value for the class: 5 per device) |
+| `UPLOADS_PER_DEVICE_PER_DAY`, `UPLOADS_PER_IP_PER_DAY` | Upload limits (code defaults 3 and 30; live value for the class: 7 per device) |
 | `LIMIT_SALT` | Optional. Salt for the hashed limit counters |
 
 New variables only apply on the next deployment, so push a change after editing them. An empty commit works: `git commit --allow-empty -m "apply settings"` then `git push`.
