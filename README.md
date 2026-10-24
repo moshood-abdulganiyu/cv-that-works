@@ -35,6 +35,7 @@ Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan
 ## What a student sees
 - **Upload page:** file, target (internship, scholarship, graduate study, leadership, not sure), a consent tickbox, an optional save tickbox, one "Score my CV" button. The button stays grey until a file is chosen and the consent box is ticked. A strip below shows how the 100 points are split.
 - **Result screen:** total score, band, score for each category, three things working, top three fixes with the points each would gain, missing sections, rewrites of the two weakest bullets with [__] placeholders, what the AI reader liked, questions about lines that could be read two ways, one next step, and a line saying only numbers the student can defend should stay on the CV.
+- **Light and dark mode:** a button in the top bar switches between them. The choice is remembered on that device, and the first visit follows the phone's own setting. The logo switches with the mode.
 - **Re-upload** shows the previous score next to the new one.
 - Categories where the two readers disagreed are marked "Less certain".
 
@@ -113,7 +114,8 @@ core/engine.py        file in, report out
 core/service.py       multipart reading, consent, save box, per-device limits (Upstash), privacy strip
 public/index.html     student upload page and result screen (markup and JavaScript)
 public/style.css      page styles (design from the Google Stitch export)
-public/logo.png       Brainstorm Group logo shown in the top bar
+public/light-mode-logo.jpg   Brainstorm Group (BSG) logo for light mode, fixed at the top-left
+public/dark-mode-logo.jpg    Brainstorm Group (BSG) logo for dark mode
 public/review.html    trainer review page (needs the review code)
 train/                evaluation notebook for step 9. export.json and model_v1.json stay private (see .gitignore)
 tests/                ladder.py (builds the calibration CVs), test_smoke, test_api, test_no_summary,

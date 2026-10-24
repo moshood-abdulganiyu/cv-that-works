@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CV That Works | Brainstorm Group</title>
+<title>CV That Works | Brainstorm Group (BSG)</title>
 <meta name="description" content="Upload your first CV and get a score out of 100, what is working and the three fixes that matter most.">
+<script>
+/* choose light or dark before the page paints, so there is no flash */
+(function(){var t=null;try{t=localStorage.getItem("cvtw_theme");}catch(e){}
+if(t!=="light"&&t!=="dark"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+document.documentElement.setAttribute("data-theme",t);})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
@@ -14,6 +20,8 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
     <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
     <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
@@ -36,14 +44,16 @@
 
 <header class="topbar">
   <div class="topbar-in">
-    <img src="/logo.png" alt="Brainstorm Group" onerror="this.remove()">
-    <div class="brand"><b>CV That Works</b><span>A Student Support Project by Brainstorm Group</span></div>
+    <img class="logo logo-light" src="/light-mode-logo.jpg" alt="Brainstorm Group (BSG)" onerror="this.remove()">
+    <img class="logo logo-dark" src="/dark-mode-logo.jpg" alt="Brainstorm Group (BSG)" onerror="this.remove()">
+    <div class="brand"><b>CV That Works</b><span>A Student Support Project by Brainstorm Group (BSG)</span></div>
+    <button type="button" id="themeBtn" class="themebtn" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="i" aria-hidden="true"><use href="#i-moon"/></svg></button>
   </div>
 </header>
 
 <section class="hero" aria-labelledby="pageTitle">
   <div class="hero-in">
-    <div class="eyebrow">Brainstorm Group presents</div>
+    <div class="eyebrow">Brainstorm Group (BSG) presents</div>
     <h1 id="pageTitle">CV That Works</h1>
     <p class="lead">Turn your student experiences, skills and achievements into a CV that gets noticed. Upload yours and get a score out of 100, what is working, and the three fixes that matter most.</p>
     <ul class="badges">
@@ -148,6 +158,22 @@
   var KEY = "cvtw_prev";
   var $ = function(id){ return document.getElementById(id); };
   var NS = "http://www.w3.org/2000/svg";
+
+  /* ---------- light and dark mode ---------- */
+  var rootEl = document.documentElement;
+  function syncThemeBtn(){
+    var dark = rootEl.getAttribute("data-theme") === "dark";
+    var b = $("themeBtn"), label = dark ? "Switch to light mode" : "Switch to dark mode";
+    b.setAttribute("aria-label", label); b.title = label;
+    b.querySelector("use").setAttribute("href", dark ? "#i-sun" : "#i-moon");
+  }
+  $("themeBtn").addEventListener("click", function(){
+    var next = rootEl.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    rootEl.setAttribute("data-theme", next);
+    try { localStorage.setItem("cvtw_theme", next); } catch(e){}
+    syncThemeBtn();
+  });
+  syncThemeBtn();
 
   function el(tag, cls, text){
     var n = document.createElement(tag);
