@@ -1,0 +1,121 @@
+id,course,group,university,level,target,zone,planned_flaws,flaw_cost_total,heading_variant
+cv_001,Mechanical,Engineering,University of Ilorin,300,internship,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2);G1x4(4);H2,59,none
+cv_002,Physics,Sciences,University of Nigeria Nsukka,400,scholarship,20-40,N3(16);S2(5);B2(8);B3(6);X1(3);X3(2);X4(4);L1(3);E1(2);P1(2);C1(2);M2(3);G1x4(4);X5x2(2),62,none
+cv_003,Crop Production,Agriculture,Federal University of Agriculture Abeokuta,300,internship,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);L1(3);E1(2);P1(2),50,none
+cv_004,Biochemistry,Sciences,University of Benin,400,graduate study,40-50,N3(16);S2(5);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2);G1x2(2);H3,52,none
+cv_005,MBBS,Medical and health,University of Ibadan,400,leadership,50-60,N3(16);S2(5);B2(8);L1(3);E2(3);P1(2);C1(2);X1(3);G1x1(1);H4,43,none
+cv_006,Computer,Engineering,Covenant University,400,internship,60-70,N3(16);B3(6);S3(2);E1(2);L1(3);P1(2);H3,31,none
+cv_007,Pharmacy,Medical and health,University of Lagos,400,scholarship,70-80,N2(10);B1x2(3);L1(3);S3(2);X5x2(2);H5,20,none
+cv_008,Animal Production,Agriculture,Michael Okpara University of Agriculture Umudike,400,graduate study,80-90,N1(5);E1(2);S3(2);H6,9,none
+cv_009,Electrical and Electronic,Engineering,Obafemi Awolowo University,500,scholarship,90-100,H3,0,none
+cv_010,Computer Science,Sciences,Federal University of Technology Minna,300,internship,90-100,S3(2);L2(2),4,none
+cv_011,Food Science and Technology,Agriculture,Federal University of Technology Akure,300,internship,20-40,N3(16);S4(2);S5(2);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2);T1(3);M2(4);G1x4(4);H5,60,none
+cv_012,Nursing,Medical and health,University of Maiduguri,300,none,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);L1(3);E2(3);P1(2);C1(2);T1(5);G1x2(2);X5x2(2),67,none
+cv_013,Civil,Engineering,University of Port Harcourt,400,internship,40-50,N3(16);S1(10);B2(8);B3(6);X4(4);L1(3);E1(2);C1(2);P1(2);H2,53,none
+cv_014,Geology,Sciences,Ahmadu Bello University,300,internship,50-60,N3(16);S1(10);B2(6);X1(3);L1(3);E1(2);C1(2),42,none
+cv_015,Petroleum,Engineering,Federal University of Petroleum Resources Effurun,400,leadership,50-60,N3(16);S1(10);B3(6);X3(2);L1(3);E2(3);M1(2);H3,42,none
+cv_016,Statistics,Sciences,University of Jos,300,none,60-70,N2(10);S1(10);L1(3);C1(2);E1(2);T1(5),32,none
+cv_017,Microbiology,Sciences,Ladoke Akintola University of Technology,400,graduate study,70-80,S2(5);N1(5);L1(3);P1(2);G1x3(3);B4(1);H1,19,Laboratory Experience
+cv_018,Medical Laboratory Science,Medical and health,University of Calabar,400,internship,80-90,N2(10);S3(2),12,none
+cv_019,Mechatronics,Engineering,Federal University of Technology Owerri,500,graduate study,90-100,N1(5);H2,5,none
+cv_020,Soil Science,Agriculture,Joseph Sarwuan Tarka University Makurdi,400,scholarship,90-100,E1(2);S5(2),4,none
+cv_021,Chemical,Engineering,Bayero University Kano,300,leadership,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);L1(3);E2(3);P1(2);C1(2);T1(4),62,none
+cv_022,Mathematics,Sciences,University of Uyo,200,leadership,20-40,N3(16);S1(10);B2(8);B1x2(3);X1(3);X3(2);X4(4);L2(2);E1(2);P1(2);C1(2);G1x3(3);T1(3);M3(2);X5x3(3),65,none
+cv_023,Physiotherapy,Medical and health,Nnamdi Azikiwe University,300,none,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);L2(2);E1(2);P1(2);C1(2);T1(5),56,none
+cv_024,Plant Biology,Sciences,Delta State University,300,leadership,50-60,N3(16);S1(10);B1x4(6);X1(3);E1(2);L2(2);X5x2(2),41,none
+cv_025,Agricultural and Bioresource,Engineering,University of Nigeria Nsukka,400,internship,60-70,N3(16);S2(5);L1(3);B2(4);E1(2);X5(1),31,none
+cv_026,Agricultural Economics,Agriculture,University of Ibadan,300,scholarship,60-70,N2(10);S1(10);B3(6);L1(3);X5x2(2);H2,31,none
+cv_027,Computer,Engineering,Nile University of Nigeria,500,internship,70-80,N2(10);B3(6);E1(2);S4(2);X5(1);H3,21,none
+cv_028,Chemistry,Sciences,Federal University Oye-Ekiti,400,graduate study,80-90,S2(5);L2(2);B4(1);X5(1);H2,9,none
+cv_029,Dentistry,Medical and health,University of Benin,500,scholarship,90-100,P1(2);B4(1);H5,3,none
+cv_030,Fisheries and Aquaculture,Agriculture,Lagos State University,400,graduate study,90-100,X5(1),1,none
+cv_031,Agricultural Extension,Agriculture,Usmanu Danfodiyo University Sokoto,300,leadership,20-40,N3(16);S1(10);B1x4(6);B3(6);X1(3);X3(2);X4(4);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x2(2);M3(2);H4,64,none
+cv_032,Geophysics,Sciences,Federal University of Technology Akure,300,internship,20-40,N3(16);S2(5);B2(8);B3(6);X1(3);X3(2);X4(4);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x4(4);T1(4);M2(4);X6(2),71,none
+cv_033,Metallurgical and Materials,Engineering,Nnamdi Azikiwe University,300,internship,40-50,N3(16);S1(10);B1x4(6);B3(6);X1(3);X3(2);L1(3);E1(2);P1(2);M2(2);T1(2),54,none
+cv_034,Nursing,Medical and health,Babcock University,400,leadership,50-60,N3(16);S2(5);B2(8);X1(3);L1(3);P1(2);C1(2);E1(2);G1x3(3),44,none
+cv_035,Crop Production,Agriculture,Obafemi Awolowo University,400,scholarship,60-70,N3(16);X1(3);S2(5);L1(3);E1(2);G1x3(3);X5(1);H1,33,Farm Practical Year
+cv_036,Electrical and Electronic,Engineering,Rivers State University,400,internship,70-80,S1(10);N1(5);L1(3);M3(2);X5x2(2);H2,22,none
+cv_037,MBBS,Medical and health,Ahmadu Bello University,500,scholarship,70-80,N2(10);B2(6);E2(3);T1(3);H1,22,Clinical Postings
+cv_038,Animal Biology,Sciences,Ambrose Alli University,300,leadership,80-90,N1(5);B1x2(3);L1(3),11,none
+cv_039,Civil,Engineering,Landmark University,500,scholarship,90-100,M3(2);S3(2),4,none
+cv_040,Animal Production,Agriculture,Federal University of Agriculture Abeokuta,500,graduate study,90-100,T1(2);H4,2,none
+cv_041,Pharmacy,Medical and health,University of Ibadan,500,internship,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);X4(4);L1(3);E2(3);P1(2);C1(2);M2(4),66,none
+cv_042,Mechatronics,Engineering,Federal University Oye-Ekiti,300,internship,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);X4(4);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x4(4);M2(3);T1(3),75,none
+cv_043,Computer Science,Sciences,Obafemi Awolowo University,400,graduate study,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);X5x3(3);L1(3);E1(2);T1(3);H5,56,none
+cv_044,Food Science and Technology,Agriculture,Federal University of Technology Minna,400,none,50-60,N3(16);S1(10);B3(6);L1(3);E1(2);P1(2);T1(5);H2,44,none
+cv_045,Medical Laboratory Science,Medical and health,Rivers State University,300,leadership,60-70,N2(10);B2(8);S1(10);L2(2);X6(2);M3(2);H6,34,none
+cv_046,Soil Science,Agriculture,Michael Okpara University of Agriculture Umudike,300,internship,70-80,X1(3);N1(5);B3(6);S2(5);M1(2),21,none
+cv_047,Mechanical,Engineering,University of Lagos,400,scholarship,80-90,M3(2);S4(2);N1(5);P1(2);X5(1);H1,12,SIWES Experience
+cv_048,Physics,Sciences,University of Port Harcourt,400,graduate study,80-90,X3(2);E1(2);N1(5);T1(3),12,none
+cv_049,Chemical,Engineering,Afe Babalola University,500,scholarship,90-100,L2(2);X5x2(2),4,none
+cv_050,Statistics,Sciences,University of Ibadan,400,graduate study,90-100,G1x2(2);S4(2),4,none
+cv_051,Agricultural Economics,Agriculture,University of Nigeria Nsukka,200,leadership,20-40,N3(16);S2(5);B2(8);B3(6);X1(3);X2(3);X3(2);X4(4);L1(3);E2(3);P1(2);C1(2);G1x4(4);M2(4);T1(3);X5(1),69,none
+cv_052,Microbiology,Sciences,University of Port Harcourt,300,none,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);X4(4);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x4(4);M2(4);T1(5),78,none
+cv_053,Dentistry,Medical and health,University of Lagos,400,leadership,40-50,N3(16);S2(5);B2(8);B3(6);X1(3);X4(4);L1(3);E2(3);P1(2);M2(3);G1x2(2),55,none
+cv_054,Computer,Engineering,Federal University of Technology Minna,300,internship,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2);M2(3),58,none
+cv_055,Agricultural and Bioresource,Engineering,Federal University of Agriculture Abeokuta,400,internship,50-60,N3(16);S1(10);B2(8);X4(4);L1(3);E1(2);P1(2),45,none
+cv_056,Geology,Sciences,University of Ibadan,400,graduate study,60-70,N3(16);B3(6);S1(10);P1(2);B4(1),35,none
+cv_057,Nursing,Medical and health,University of Benin,300,scholarship,70-80,N2(10);S2(5);L1(3);P1(2);G1x2(2);X6(2);H1,24,Clinical Postings
+cv_058,Fisheries and Aquaculture,Agriculture,University of Uyo,300,internship,80-90,B3(6);L1(3);C1(2);S5(2);H3,13,none
+cv_059,Petroleum,Engineering,University of Port Harcourt,500,scholarship,90-100,E1(2);L2(2),4,none
+cv_060,Biochemistry,Sciences,Bowen University,400,scholarship,90-100,N1(5);X5(1);H6,6,none
+cv_061,Electrical and Electronic,Engineering,Ahmadu Bello University,300,internship,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);L1(3);E2(3);P1(2);C1(2);G1x4(4);M2(4);T1(4);H1,70,SIWES Experience
+cv_062,Mathematics,Sciences,University of Lagos,300,scholarship,40-50,N3(16);S1(10);B1x4(6);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2),53,none
+cv_063,Chemistry,Sciences,Federal University of Technology Owerri,300,internship,50-60,N3(16);S1(10);B2(8);B3(6);L1(3);E1(2),45,none
+cv_064,Animal Production,Agriculture,Usmanu Danfodiyo University Sokoto,300,internship,50-60,N3(16);S1(10);B2(8);X1(3);X3(2);L1(3);E2(3);P1(2);H1,47,Farm Practical Year
+cv_065,Metallurgical and Materials,Engineering,Federal University of Technology Akure,500,graduate study,60-70,N3(16);B1x4(6);E2(3);L1(3);S4(2);X5x2(2);H4,32,none
+cv_066,MBBS,Medical and health,University of Nigeria Nsukka,500,leadership,60-70,N2(10);S1(10);X3(2);B3(6);E1(2);L1(3);M3(2),35,none
+cv_067,Plant Biology,Sciences,University of Ilorin,400,graduate study,70-80,N3(16);S4(2);P1(2);C1(2);B4(1);X5(1),24,none
+cv_068,Civil,Engineering,Rivers State University,500,leadership,80-90,N2(10);E1(2);X6(2),14,none
+cv_069,Pharmacy,Medical and health,Obafemi Awolowo University,500,scholarship,90-100,B1x2(3);H1,3,Practicum
+cv_070,Crop Production,Agriculture,Delta State University,400,scholarship,90-100,C1(2);L2(2);B4(1),5,none
+cv_071,Physiotherapy,Medical and health,Bayero University Kano,400,leadership,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X2(3);X3(2);X4(4);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x3(3);M2(4);X6(2),74,none
+cv_072,Agricultural Extension,Agriculture,University of Nigeria Nsukka,400,graduate study,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);L1(3);E1(2);B4(1);H6;H1,49,Field Attachment
+cv_073,Mechatronics,Engineering,Federal University of Technology Owerri,400,scholarship,50-60,N3(16);S1(10);B2(8);B3(6);X1(3);L1(3);E1(2);H5,48,none
+cv_074,Animal Biology,Sciences,Federal University Oye-Ekiti,300,leadership,60-70,N3(16);B2(8);S2(5);L1(3);P1(2);M1(2),36,none
+cv_075,Mechanical,Engineering,University of Benin,400,none,70-80,N3(16);E1(2);L2(2);T1(5);H4,25,none
+cv_076,Agricultural Economics,Agriculture,Federal University of Agriculture Abeokuta,400,scholarship,70-80,B2(8);N2(10);L2(2);S5(2);E1(2);T1(3),27,none
+cv_077,Food Science and Technology,Agriculture,Bowen University,400,internship,80-90,S1(10);M1(2);B4(1);X5(1);H5,14,none
+cv_078,Medical Laboratory Science,Medical and health,Obafemi Awolowo University,400,graduate study,80-90,N1(5);G1x3(3);B2(4);E1(2);H1,14,Laboratory Experience
+cv_079,Chemical,Engineering,Covenant University,400,scholarship,90-100,P1(2);S3(2);X5(1);H3,5,none
+cv_080,Geophysics,Sciences,Federal University of Technology Akure,400,graduate study,90-100,M3(2);T1(2),4,none
+cv_081,Estate Management,Engineering,Prince Abubakar Audu University,200,leadership,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);C1(2);G1x3(3);M3(2);H5,60,none
+cv_082,Environmental Science,Sciences,Federal University Lokoja,300,internship,20-40,N3(16);S2(5);B2(8);B3(6);X1(3);X2(3);X4(4);L2(2);E1(2);P1(2);C1(2);G1x4(4);M2(3);H4,60,none
+cv_083,Forestry,Agriculture,Federal University of Technology Akure,300,internship,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);H2;H1,51,Field Attachment
+cv_084,Petroleum,Engineering,Niger Delta University,400,internship,50-60,N3(16);S1(10);B2(8);X1(3);L1(3);E2(3);P1(2);F1(bullet-dot);H4,45,none
+cv_085,Fisheries and Aquaculture,Agriculture,Cross River University of Technology,200,none,60-70,N3(16);S1(10);L1(3);E1(2);P1(2);T1(5);H3,38,none
+cv_086,Optometry,Medical and health,University of Benin,400,scholarship,70-80,N2(10);S3(2);L1(3);P1(2);X5x2(2);B1x2(3);H3,22,none
+cv_087,Mathematics,Sciences,Gombe State University,400,graduate study,70-80,N1(5);S1(10);L2(2);X5(1);E1(2);H2,20,none
+cv_088,Veterinary Medicine,Agriculture,Usmanu Danfodiyo University Sokoto,500,scholarship,80-90,N1(5);S3(2);L2(2);X5(1);M3(2);H2,12,none
+cv_089,Architecture,Engineering,Abubakar Tafawa Balewa University Bauchi,500,scholarship,90-100,E1(2);S3(2);X5(1);H3;H1,5,Studio Projects
+cv_090,Dentistry,Medical and health,University of Port Harcourt,500,scholarship,90-100,L2(2);B4(1);F1(profile-work-experience);H5,3,none
+cv_091,Soil Science,Agriculture,Ahmadu Bello University,200,leadership,20-40,N3(16);S1(10);B1x4(6);B3(6);X1(3);X3(2);X5x2(2);L1(3);E2(3);P1(2);C1(2);M3(2);T1(4);H2;H1,61,Farm Practical Year
+cv_092,Radiography,Medical and health,Nnamdi Azikiwe University,300,internship,20-40,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);X5x3(3);L1(3);E2(3);P1(2);C1(2);G1x3(3);M2(4);T1(3);H6,68,none
+cv_093,Metallurgical and Materials,Engineering,Federal University of Technology Owerri,400,graduate study,40-50,N3(16);S2(5);B1x4(6);B3(6);X1(3);X5x3(3);L1(3);E1(2);P1(2);C1(2);G1x3(3);M3(2);T1(3),56,none
+cv_094,Physiotherapy,Medical and health,Obafemi Awolowo University,300,none,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E1(2);P1(2);T1(5);H3,57,none
+cv_095,Biotechnology,Sciences,Federal University of Technology Minna,300,graduate study,50-60,N3(16);B2(6);S2(5);X1(3);L1(3);E1(2);P1(2);C1(2);G1x3(3);H1,42,Laboratory Experience
+cv_096,Agricultural and Bioresource,Engineering,Michael Okpara University of Agriculture Umudike,500,graduate study,60-70,N3(16);S2(5);B2(4);L2(2);E1(2);X5x2(2);H6,31,none
+cv_097,Chemistry,Sciences,Ebonyi State University,300,graduate study,70-80,N2(10);S2(5);B4(1);L1(3);P1(2);X5x2(2);F1(skills-one-line);H5,23,none
+cv_098,Agricultural Extension,Agriculture,Federal University of Agriculture Abeokuta,400,leadership,80-90,N2(10);E1(2);P1(2);F1(bullet-dot);H4,14,none
+cv_099,Nursing,Medical and health,Federal University of Health Sciences Otukpo,500,leadership,80-90,S2(5);N1(5);B4(1);X5(1);L1(3);H6,15,none
+cv_100,Computer Science,Sciences,Baze University,400,scholarship,90-100,P1(2);S5(2);H2,4,none
+cv_101,Estate Management,Engineering,University of Lagos,300,internship,20-40,N3(16);S2(5);B2(8);B3(6);X1(3);X3(2);X4(4);X5x2(2);L1(3);E1(2);P1(2);C1(2);G1x2(2);X6(2);T1(2),61,none
+cv_102,Animal Biology,Sciences,Nasarawa State University,200,leadership,40-50,N3(16);S1(10);B1x4(6);B3(6);X1(3);X4(4);L2(2);E1(2);P1(2);H3,51,none
+cv_103,Veterinary Medicine,Agriculture,Michael Okpara University of Agriculture Umudike,400,internship,50-60,N3(16);S1(10);B3(6);X3(2);L1(3);E2(3);M3(2);X5x2(2);H2;H1,44,Clinical Rotations
+cv_104,Optometry,Medical and health,Federal University of Technology Owerri,300,internship,50-60,N3(16);S1(10);B1x4(6);X1(3);L1(3);E1(2);P1(2);C1(2);H5,44,none
+cv_105,Geophysics,Sciences,Federal University of Petroleum Resources Effurun,400,graduate study,60-70,N2(10);S1(10);B3(6);P1(2);C1(2);M3(2);F1(skills-one-line);H4,32,none
+cv_106,Architecture,Engineering,Bells University of Technology,400,scholarship,70-80,N3(16);E1(2);L2(2);S4(2);X5(1);H4,23,none
+cv_107,Medical Laboratory Science,Medical and health,Federal University of Health Sciences Azare,500,graduate study,70-80,N2(10);B1x2(3);C1(2);P1(2);S5(2);X6(2);F1(bullet-dot);H6,21,none
+cv_108,Environmental Science,Sciences,Federal University Wukari,400,none,80-90,N2(10);T1(5);H5,15,none
+cv_109,Petroleum,Engineering,Covenant University,500,none,90-100,T1(5);X5(1);H4,6,none
+cv_110,Forestry,Agriculture,Federal University of Agriculture Abeokuta,400,scholarship,90-100,L2(2);B4(1);H5,3,none
+cv_111,Biochemistry,Sciences,Lagos State University,300,none,20-40,N3(16);S1(10);B1x4(6);B3(6);X1(3);X2(3);X3(2);X5x2(2);L1(3);E2(3);P1(2);C1(2);G1x4(4);M3(2);T1(5);H4,69,none
+cv_112,Fisheries and Aquaculture,Agriculture,Federal University Birnin Kebbi,300,internship,40-50,N3(16);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E2(3);P1(2);M2(2);H6,55,none
+cv_113,Dentistry,Medical and health,Bayero University Kano,400,leadership,40-50,N3(16);S2(5);B2(8);X1(3);X4(4);L1(3);E1(2);P1(2);C1(2);G1x3(3);M2(3);X5(1);H5,52,none
+cv_114,Agricultural Extension,Agriculture,Olabisi Onabanjo University (College of Agricultural Sciences),500,leadership,50-60,N2(10);S1(10);B2(8);B3(6);X1(3);X3(2);L1(3);E1(2);M3(2);H3,46,none
+cv_115,Metallurgical and Materials,Engineering,Ahmadu Bello University,500,graduate study,60-70,N2(10);S4(2);B1x4(6);B3(6);L1(3);E2(3);X5x2(2);P1(2);F1(profile-work-experience);H2,34,none
+cv_116,Radiography,Medical and health,University of Calabar,400,internship,60-70,N3(16);S2(5);B3(6);L1(3);P1(2);X5(1);H5;H1,33,Clinical Postings
+cv_117,Soil Science,Agriculture,University of Nigeria Nsukka,400,scholarship,70-80,N1(5);S1(10);L1(3);E1(2);M3(2);H3,22,none
+cv_118,Agricultural and Bioresource,Engineering,Joseph Sarwuan Tarka University Makurdi,400,scholarship,80-90,S4(2);N1(5);L1(3);M3(2);X5(1);H3,13,none
+cv_119,Physiotherapy,Medical and health,University of Maiduguri,500,graduate study,80-90,B1x4(6);N1(5);C1(2);H2,13,none
+cv_120,Biotechnology,Sciences,Redeemer's University,400,leadership,90-100,S3(2);P1(2);F1(years-only-dates);H6,4,none

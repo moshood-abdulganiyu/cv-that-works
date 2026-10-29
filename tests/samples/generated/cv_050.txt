@@ -1,0 +1,60 @@
+Titilope Ayoola
+Ibadan, Nigeria | titilope.ayoola@example.com | +234 800 000 0150 | linkedin.com/in/titilope-ayoola
+
+Summary
+Statistics student at the University of Ibadan with a CGPA of 4.71. Built a forecasting model for hospital bed demand with an error of 7 percent and presented it to 55 staff and students.
+
+Education
+BSc Statistics | University of Ibadan | Expected Jul 2027
+- Holds a CGPA of 4.71 on a 5.0 scale, ranked 2nd in a class of 85 students
+- Earned distinctions in 8 courses including Probability, Regression and Time Series
+- Completed 16 practical sessions in R and SPSS on real survey records
+- Presented a seminar on forecasting methods to 60 students and lecturers
+
+Projects
+Forecasting Hospital Bed Demand | Final Year Research Project | Jan 2026 - Present
+- Built a time series model on 36 months of admission records with a 7 percent forecast error
+- Cut the manual planning time of the records office from 2 days to 3 hours with an R script
+- Presented the model to 55 staff and students at a departmental seminar
+- Wrote 3 thesis chapters and logged 200 hours of analysis
+Survey of Study Habits Among Students | Course Project | Sep 2025 - Dec 2025
+- Sampled 300 students from 6 faculties and fitted a logistic regression on exam performance
+- Found that students who studied in groups were 1.4 times more likely to pass
+
+Experience
+Statistics Intern | Oyo State Bureau of Statistics | Jul 2025 - Sep 2025
+- Cleaned 5000 household survey records and cut error flags by 40 percent
+- Produced 12 summary tables used in the bureau quarterly bulletin
+- Trained 5 new interns on data entry rules
+- Prepared 20 weekly progress reports for the supervisor
+
+Leadership and Volunteering
+President | Statistics Students Association | Oct 2025 - Present
+- Led a committee of 8 to run 6 workshops on R for 240 students
+- Raised 160000 naira from 4 sponsors for the annual statistics week
+- Hardworking effort in preparing 10 revision packs for 150 students
+- Mentored 15 junior students on regression assignments
+Volunteer | Free Data Help Desk, University of Ibadan | Mar 2026 - May 2026
+- Supported 45 students from other departments to analyse survey records for their final year work
+- Acted as a team player in a group of 6 helpers who staffed the desk
+- Prepared 3 short guides on charts and tables that were downloaded 400 times
+
+Skills
+- R, SPSS, Stata and Python
+- Time series and regression modelling
+- Excel and report writing
+
+Awards
+- Departmental Prize for the Best Result in Regression Analysis, 2025
+- Dean's List for 3 sessions
+
+Certifications and Training
+- Time Series Forecasting, 4 week online course, 2026
+- Survey Methods Workshop, 2 days, University of Ibadan, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Statistical Association
+- Member of the Statistics Students Association
+
+Languages
+- English and Yoruba

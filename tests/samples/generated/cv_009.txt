@@ -1,0 +1,60 @@
+Ayodeji Ogundare
+Ile-Ife, Nigeria | ayodeji.ogundare@example.com | +234 800 000 0109 | linkedin.com/in/ayodeji-ogundare
+
+Summary
+Final year Electrical and Electronic Engineering student with a CGPA of 4.82 and first class standing, applying for a scholarship for postgraduate study in power systems. Won a national engineering competition and led a volunteer solar project that powers a rural community clinic.
+
+Education
+BSc Electrical and Electronic Engineering | Obafemi Awolowo University | Expected Jul 2027
+- Holds a CGPA of 4.82 on a 5.0 scale, ranked 3rd in a class of 112 students
+- Earned distinctions in 9 core courses including Power Systems Analysis and Electrical Machines
+- Completed 14 laboratory sessions in control and power electronics with an average score of 92 percent
+
+Projects
+Solar Charge Controller | Final Year Research Project | Jan 2026 - Present
+- Designed a 12 V MPPT charge controller that raised panel charging efficiency by 18 percent over a PWM design in bench tests
+- Built a prototype that now powers 6 security lights across a student hostel
+- Wrote the firmware in C for a PIC microcontroller and logged 400 hours of test data
+- Presented the design at a faculty research seminar to 60 staff and students
+Load Forecasting Model | Power Systems Course Project | Aug 2025 - Nov 2025
+- Built a Python model forecasting campus electricity load from 24 months of data with a 6 percent error
+- Reduced manual load estimation time from 2 days to 3 hours
+- Presented the results to 40 classmates and 2 lecturers
+
+Experience
+SIWES Trainee | Southwest Power Distribution Ltd | Jul 2025 - Dec 2025
+- Maintained fault records for 11 kV feeders over 5 months and cut average fault logging time by 30 percent
+- Inspected 45 distribution transformers and reported 7 overloads to engineers
+- Trained 8 new SIWES students on safety procedures
+- Prepared 20 weekly maintenance reports for the district engineer
+
+Leadership and Volunteering
+Project Lead | OAU Solar Outreach Volunteers | Jun 2025 - Aug 2025
+- Led a team of 12 volunteers to install a 3 kW solar system at a rural community clinic
+- Raised 1.2 million naira from alumni and 5 sponsors for the installation
+- Cut clinic generator fuel spending by 60 percent
+Vice President | Electrical Engineering Students Society | Oct 2025 - Present
+- Organised 6 technical seminars attended by 350 students
+- Led a committee of 9 to run an inter-faculty competition with 22 teams
+- Mentored 15 junior students through their first circuit design projects
+
+Skills
+- MATLAB, Python, C and PLC programming
+- Circuit design and PCB layout
+- Microsoft Excel and technical report writing
+
+Awards
+- First prize among 48 teams, National Engineering Students Design Competition, 2025
+- Faculty Merit Award for the top 3 students in the 400 level class, 2025
+- Departmental Scholar Award worth 150000 naira, 2024
+
+Certifications and Training
+- 40 hour PLC and SCADA Training, Lagos Technical Institute, 2025
+- Power Electronics Specialisation, 4 courses, Coursera, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Society of Engineers
+- Student member of the IEEE student branch at Obafemi Awolowo University
+
+Languages
+- English, Yoruba and basic French

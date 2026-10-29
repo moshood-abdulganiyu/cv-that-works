@@ -1,0 +1,54 @@
+Zainab Mohammed-Lawal
+Minna, Nigeria | zainab.lawal@example.com | +234 800 000 0110 | linkedin.com/in/zainab-lawal-4829
+
+Summary
+Computer Science student seeking a data internship, with hands-on Python experience and a CGPA of 4.60.
+
+Education
+BSc Computer Science | Federal University of Technology Minna | Expected Jul 2028
+- CGPA of 4.60 on a 5.0 scale, ranked 6th in a class of 160 students
+- Earned grade A in 8 of 10 courses in programming, databases and statistics
+- Completed hands-on practicals in Python, SQL and data structures
+
+Projects
+Campus Bus Tracker | Team Project | Feb 2026 - May 2026
+- Built a Python and Flask web app tracking 4 campus buses, used by 300 students in a pilot
+- Cleaned and analysed 5000 GPS records in pandas to predict arrival times within 4 minutes
+- Led a team of 4 and delivered the project 2 weeks before the deadline
+- Wrote technical documentation that cut onboarding time for new team members from 2 days to 1
+Student Results Dashboard | Course Project | Sep 2025 - Dec 2025
+- Created an Excel dashboard summarising 600 student results by course
+- Cut report preparation time from 3 hours to 20 minutes using macros
+- Improved team communication by running 5 weekly progress reviews
+
+Experience
+Data Entry Intern | Minna Business Hub | Jul 2025 - Aug 2025
+- Entered and verified 1200 customer records with 99 percent accuracy
+- Drafted 30 follow-up emails that improved communication with clients and lifted replies by 20 percent
+- Built 3 Excel summary reports used by the 6 member sales team
+- Trained 5 colleagues to use shared spreadsheets
+
+Leadership and Volunteering
+Treasurer | Computer Science Students Association | Oct 2025 - Present
+- Managed a budget of 450000 naira across 5 departmental events
+- Organised a coding competition for 80 participants
+- Raised 120000 naira from 3 sponsors for the competition prizes
+
+Skills
+- Python, SQL and Excel
+- Git and Linux
+- Technical writing and communication
+
+Awards
+- Dean's List for 2 consecutive sessions
+- Winner among 20 teams, Departmental Hackathon, 2025
+
+Certifications and Training
+- Data Analysis with Python, 6 week course, Coursera, 2025
+- SQL for Data Science, 4 week course, Coursera, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Computer Society
+
+Languages
+- English, Hausa and Nupe

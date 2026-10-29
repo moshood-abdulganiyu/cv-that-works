@@ -1,0 +1,50 @@
+Kosisochukwu Obi
+Owerri, Nigeria | kosi_mechatronics_pro@example.com | +234 800 000 0173
+
+Education
+BEng Mechatronics Engineering | Federal University of Technology Owerri | Expected Jul 2028
+- CGPA of 4.34 on a 5.0 scale
+- Courses in Control Systems, Sensors and Actuators, Microprocessors and Engineering Drawing
+- Practicals in electronics, PLC programming and machine workshop
+- Interest in industrial automation and robotics
+
+Experience
+Vacation Trainee | Owerri Bottling and Packaging Ltd | Jul 2025 - Sep 2025
+- Observation of the bottling line and its sensors
+- Exposure to conveyor motor starters and control panels
+- Cleaning of sensors and tools after each shift
+- Notes on routine maintenance checks
+Workshop Assistant | Mechatronics Workshop, Federal University of Technology Owerri | Jan 2026 - Jun 2026
+- Arrangement of tools before practical classes
+- Handing of components to students
+- Cleaning of electronics benches
+- Reporting of damaged equipment to the technologist
+
+Leadership and Volunteering
+Founder | Robotics Club | Sep 2025 - Present
+- Founded a robotics club for first and second year students
+- Weekly meetings on Arduino and sensor basics
+- Display of simple robots at the faculty open day
+Treasurer | Mechatronics Engineering Students Association | Oct 2025 - Present
+- Keeping of the account book
+- Collection of dues from members
+- Preparation of termly income and spending lists
+
+Skills
+- Arduino and PLC ladder logic
+- Basic C programming
+- Soldering and circuit testing
+- Microsoft Word and PowerPoint
+
+Awards
+- Departmental Prize for the Best Practical Student, 2025
+
+Certifications and Training
+- PLC Basics Training, Owerri Automation Institute, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Society of Engineers
+- Member of the Mechatronics Engineering Students Association
+
+Languages
+- English and Igbo

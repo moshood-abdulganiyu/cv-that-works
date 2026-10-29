@@ -1,0 +1,52 @@
+Nneka Wariboko
+Port Harcourt, Nigeria | nneka_physics_queen@example.com | +234 800 000 0148 | linkedin.com/in/nneka-wariboko
+
+Summary
+Physics student at the University of Port Harcourt with a CGPA of 4.60 seeking graduate study in condensed matter physics. Built a low cost spectrometer that measured light wavelengths within 3 percent of reference values.
+
+Education
+BSc Physics | University of Port Harcourt | Expected Jul 2027
+- Holds a CGPA of 4.60 on a 5.0 scale, ranked 3rd in a class of 66 students
+- Earned distinctions in 6 courses including Quantum Mechanics and Solid State Physics
+- Completed lab sessions in optics, electronics and thermal physics
+- Presented a talk on semiconductors to students and staff
+
+Projects
+Low Cost Diffraction Spectrometer | Final Year Project | Jan 2026 - Present
+- Built a spectrometer from a diffraction grating and a phone camera that measured wavelengths within 3 percent of reference values
+- Wrote a Python script that calibrates 5 spectral lines and plots the spectrum
+- Presented the design to students and lecturers
+Solar Cell Efficiency Measurement | Course Project | Sep 2025 - Dec 2025
+- Measured current and voltage of 3 solar cells under 4 light levels and plotted the efficiency curves
+- Found that efficiency dropped at higher temperature and explained the result with band theory
+
+Experience
+Teaching Assistant | Department of Physics, University of Port Harcourt | Jan 2026 - Jun 2026
+- Taught 3 weekly problem classes on mechanics to 50 first year students
+- Marked weekly exercise scripts and gave feedback that raised the class average
+Physics Tutor | Home Lessons, Port Harcourt | Jul 2025 - Sep 2025
+- Taught physics to secondary school students for entrance examinations
+- Raised the average score of the group from 52 to 68 percent in mock tests
+
+Leadership and Volunteering
+Vice President | Physics Students Association | Oct 2025 - Present
+- Organised 5 physics quiz nights and talks for 200 students
+- Led a committee of 6 that raised 120000 naira for a student equipment fund
+- Mentored 10 first year students in problem solving
+Volunteer | Science Outreach for Girls | Feb 2026 - Mar 2026
+- Taught experiments on light and electricity to 80 girls from 4 schools
+
+Awards
+- Departmental Prize for the Top Student in 300 Level, 2025
+- Dean's List for 3 sessions
+
+Certifications and Training
+- Python for Scientists, online course, 2025
+- Lab Safety Training, 2 days, University of Port Harcourt, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Institute of Physics
+- Member of the Physics Students Association
+
+Languages
+- English and Ijaw

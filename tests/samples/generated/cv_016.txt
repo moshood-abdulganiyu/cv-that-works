@@ -1,0 +1,48 @@
+Gyang Dung Pam
+Nigeria | gyang_stat_king@example.com | +234 800 000 0116
+
+Education
+BSc Statistics | University of Jos | Expected Jul 2028
+- Maintained a cumulative grade point of 4.21 on a 5.0 scale across five semesters
+- Studied Probability Theory, Regression Analysis, Sampling Techniques and Design of Experiments
+- Used R and SPSS in practical classes to fit models and report findings clearly
+
+Projects
+Household Survey on Water Access in Jos South | Course Survey | Jan 2026 - Apr 2026
+- Designed a questionnaire and drew a random sample of 120 households
+- Summarised the answers in tables and charts that showed which wards had the longest queues
+- Wrote a short report that the department used as a sample for the next class
+Regression Study of Maize Yield | Departmental Practical | Sep 2025 - Dec 2025
+- Fitted a multiple regression model in R using rainfall, fertiliser use and seed type for 60 farms
+- Checked residuals and removed two outlying farms to improve the fit
+- Explained the results in plain language for the course lecturer
+Tracking Student Attendance Patterns | Course Practical | Mar 2025 - May 2025
+- Built a control chart in SPSS covering 14 weeks of lecture attendance
+- Reported the pattern to the class representative so reminders could be sent earlier
+
+Experience
+Survey Enumerator | Plateau State Ministry of Health Jos | Jul 2025 - Aug 2025
+- Visited 150 households in two wards to record immunisation status for children
+- Entered the answers on paper forms and checked each form before submission
+- Corrected 12 missing entries after rechecking forms with the supervisor
+- Thanked residents and explained the purpose of each visit before asking questions
+
+Skills
+- R, SPSS, Minitab and Stata basics
+- Questionnaire design and sampling
+- Report writing and presentation of findings
+
+Awards
+- Departmental Prize for Best Result in Probability Theory, 2025
+- Faculty Mathematics Quiz Finalist, 2025
+
+Certifications and Training
+- Introduction to R Programming, online course, 2025
+- Survey Enumerator Training, Plateau State Ministry of Health, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Statistical Association
+- Member of the Statistics Students Association, University of Jos
+
+Languages
+- English, Hausa and Berom

@@ -6,6 +6,8 @@ A free web tool for first-time CVs, built for Brainstorm Group (BSG) CV training
 
 **Live site:** https://cv-that-works.vercel.app
 
+**Review page:** open `https://cv-that-works.vercel.app/review.html`, enter the review code and press Open. (The shorter `/review` address does not work yet.)
+
 Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan. The Vercel free plan is for non-commercial use, which fits a free class. If the class ever becomes paid, revisit hosting.
 
 ## Contents

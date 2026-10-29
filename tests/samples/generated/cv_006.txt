@@ -1,0 +1,53 @@
+Tobiloba Akinwale
+Ota, Nigeria | tobi_akinwale_codes@example.com
+
+Summary
+Computer engineering student seeking a technical internship in embedded systems, with a CGPA of 4.45.
+
+Education
+BEng Computer Engineering | Covenant University | Expected Jul 2028
+- CGPA of 4.45 on a 5.0 scale
+- Built a foundation in digital logic, microprocessors and data structures
+- Completed coursework in computer networks and embedded systems
+
+Projects
+Smart Door Lock Prototype | Covenant University | Jan 2026 - Apr 2026
+- Designed an Arduino based door lock controlled by a mobile app
+- Programmed the firmware in C and tested the keypad module
+- Built a prototype that now secures the departmental electronics store
+- Wired the relay and power supply on a breadboard
+Student Attendance Tracker | Class Project | Aug 2025 - Nov 2025
+- Developed a Python application for recording lecture attendance
+- Created a simple SQLite database for student records
+- Tested the program with sample class lists
+
+Experience
+Intern | Gridline Technologies Lagos | Jul 2025 - Sep 2025
+- Configured network switches and routers in the head office
+- Documented network layouts in diagrams
+- Troubleshot workstation faults reported by staff
+- Maintained the company equipment register
+
+Leadership and Volunteering
+Technical Officer | Computer Engineering Students Association | Oct 2025 - Present
+- Organised weekly coding practice sessions for junior students
+- Managed the association social media pages
+- Coordinated hands-on workshops on Arduino and Python
+
+Skills
+- Python, C and Java
+- Arduino and Raspberry Pi
+- Microsoft Excel and Git
+- Network configuration
+
+Awards
+- Dean's List, 2025
+
+Certifications and Training
+- Introduction to Networks, Cisco Networking Academy, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Computer Society
+
+Languages
+- English, Yoruba

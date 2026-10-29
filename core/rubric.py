@@ -1,7 +1,7 @@
 """Rubric constants. One place to change weights, bands and word lists.
 Rubric version is stamped on every report. Change the version when any number here changes."""
 
-RUBRIC_VERSION = "cv-rubric-v1.0"
+RUBRIC_VERSION = "cv-rubric-v1.2"
 
 MAX_POINTS = {
     "evidence": 20, "bullets": 20, "sections": 15, "summary": 10,
@@ -32,6 +32,12 @@ SECTION_ALIASES = {
     "certifications": ["certifications", "certificates", "certifications and training", "training", "courses", "training and certifications", "licenses and certifications"],
     "languages": ["languages", "language skills"],
 }
+# Course-specific names for placements and practical training. All count as Experience.
+SECTION_ALIASES["experience"] += ["siwes", "siwes experience", "industrial attachment", "industrial training experience", "field attachment", "farm practical year",
+    "farm practical", "practicum", "clinical postings", "clinical posting", "clinical rotations", "clinical rotation", "clinical experience",
+    "clinical placements", "clinical placement", "housemanship", "housemanship rotations", "laboratory experience", "teaching practice", "practical training",
+    "internship and practical experience", "placements"]
+
 ALIAS_TO_SECTION = {a: k for k, v in SECTION_ALIASES.items() for a in v}
 BODY_SECTIONS = ["experience", "projects", "leadership"]
 

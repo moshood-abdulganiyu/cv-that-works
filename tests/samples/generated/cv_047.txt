@@ -1,0 +1,53 @@
+Folarin Cole
+Lagos, Nigeria | folarin.cole@example.com | linkedin.com/in/folarin-cole
+
+Summary
+Mechanical Engineering student at the University of Lagos with a CGPA of 4.51 and experience in machine design, workshop practice and industrial maintenance. Built a solar powered water pump model.
+
+Education
+BEng Mechanical Engineering | University of Lagos | Expected Jul 2028
+- CGPA of 4.51 on a 5.0 scale, ranked 5th in a class of 140 students
+- Earned distinctions in Thermodynamics, Machine Design and Fluid Mechanics
+- Completed 12 workshop and laboratory practicals in welding, machining and heat transfer
+
+Projects
+Solar Powered Water Pump Model | Design Project | Jan 2026 - May 2026
+- Designed a 12 V solar pump model that lifted water 3 m at 4 litres per minute
+- Built the frame with a team of 3 and cut the material cost by 20 percent against the first quote
+- Tested the pump over several hours and logged the flow rate each hour
+Gearbox Design for a Hand Mill | Course Project | September 2025 - December 2025
+- Calculated gear sizes for a 4 to 1 reduction and drew the parts in SolidWorks
+- Reduced the housing weight by 10 percent by changing the wall thickness
+
+SIWES Experience
+SIWES Trainee | Lagos Industrial Maintenance Ltd | Jul 2025 - Dec 2025
+- Serviced 18 pumps and 6 compressors in the plant under senior technicians
+- Cut average repair time on pump seals from 3 hours to 2 hours by pre-arranging spares
+- Recorded maintenance jobs in the plant log
+- Trained new trainees on lockout and tagout steps
+
+Leadership and Volunteering
+Technical Secretary | Mechanical Engineering Students Association | Oct 2025 - Present
+- Organised 4 workshops on CAD and welding for 120 students
+- Maintained the association website, which recorded 900 visits in one term
+- Mentored junior students on SolidWorks
+Volunteer | Secondary School Science Fair | Feb 2026 - Mar 2026
+- Guided 60 pupils through simple machine experiments
+- Built demonstration kits for the school
+
+Skills
+- SolidWorks, AutoCAD and MATLAB
+- Welding, lathe and milling operations
+- Microsoft Excel and technical report writing
+
+Awards
+- Faculty Prize for the Best Design Project in 300 Level, 2025
+- Dean's List for 3 sessions
+- Departmental Scholarship, 2025
+
+Certifications and Training
+- SolidWorks Associate Training, 5 days, Lagos Design Centre, 2025
+- Industrial Safety Course, 2 days, Nigerian Society of Engineers Lagos branch, 2025
+
+Languages
+- English and Yoruba

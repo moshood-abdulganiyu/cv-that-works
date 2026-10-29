@@ -1,0 +1,53 @@
+Oghenekaro Eboh
+Nigeria | oghenekaro.eboh@example.com | linkedin.com/in/oghenekaro-eboh
+
+Education
+BSc Geophysics | Federal University of Petroleum Resources Effurun | Expected Jul 2028
+- CGPA of 4.22 on a 5.0 scale, ranked 7th in a class of 50 students
+- Courses in Gravity and Magnetic Methods, Seismology, Well Logging and Geophysical Data Processing
+- Seminar on seismic attributes to classmates
+- Planning a thesis on near surface velocity
+
+Projects
+Gravity Anomaly Map of a Quarry Area | Field Project | Jan 2026 - Present
+- Collection of a total of 450 gravity readings along 9 lines around a quarry
+- Processing of the readings in a spreadsheet and a mapping package
+- Drawing of a Bouguer anomaly map for the supervisor
+Seismic Refraction Test of Soil Thickness | Course Project | September 2025 - December 2025
+- Laying of a 24 channel spread on the campus field
+- Picking of first arrival times from the records
+- Estimation of the depth to the bedrock layer
+
+Experience
+Field Assistant | Delta Geoscience Services Ltd | Jul 2025 - Sep 2025
+- Running of cables and placing of geophones on 6 survey lines
+- Recording of readings in the field notebook
+- Cleaning and storage of the instruments after each day
+Laboratory Aide | Department of Geophysics | January 2026 - June 2026
+- Arrangement of rock samples for practical classes
+- Setting up of computers for the processing class
+- Reporting of faulty equipment to the technologist
+
+Leadership and Volunteering
+Treasurer | Geophysics Students Association | Oct 2025 - Present
+- Keeping of the account book for 60 members
+- Collection of dues and issuing of receipts
+- Preparation of the termly income and spending list
+Volunteer | School Science Talk, Effurun | Feb 2026 - Mar 2026
+- Talk to pupils on how earthquakes are measured
+- Showing of a simple seismograph model
+
+Skills: Seismic processing, gravity and magnetic methods, MATLAB, Surfer, Microsoft Excel
+
+Awards
+- Departmental Prize for the Best Practical Report, 2025
+
+Certifications and Training
+- Geophysical Data Processing Workshop, Federal University of Petroleum Resources Effurun, 2025
+
+Memberships and Associations
+- Student member of the Nigerian Mining and Geosciences Society
+- Member of the Geophysics Students Association
+
+Languages
+- English, Urhobo and Pidgin

@@ -1,0 +1,59 @@
+Adewale Ogundipe
+Akure, Nigeria | adewale.ogundipe@example.com | +234 800 000 0180 | linkedin.com/in/adewale-ogundipe
+
+Summary
+Geophysics student at the Federal University of Technology Akure with a CGPA of 4.64, seeking graduate study in exploration geophysics. Built a resistivity survey model that located a water bearing layer within 2 metres of a borehole log.
+
+Education
+BSc Geophysics | Federal University of Technology Akure | Expected Jul 2027
+- Holds a CGPA of 4.64 on a 5.0 scale, ranked 3rd in a class of 58 students
+- Earned distinctions in 7 courses including Seismology and Potential Field Methods
+- Completed 12 field and processing practicals in resistivity, magnetics and gravity methods
+- Gave a talk on seismic imaging to 65 students and staff
+
+Projects
+Resistivity Survey for Groundwater near Akure | Final Year Project | Jan 2026 - Present
+- Ran 14 vertical electrical soundings over 3 profiles on a farm settlement
+- Built a layer model that matched a borehole log to within 2 metres
+- Mapped a water bearing layer 18 metres deep for the farm owner
+- Drafted 3 thesis chapters and presented the early results to 50 staff and students
+Magnetic Survey of a Buried Pipe | Course Project | September 2025 - December 2025
+- Collected 120 magnetic readings along 6 lines on the campus field
+- Located a buried pipe within 1 metre of its true position
+
+Experience
+Field Assistant | Akure Geophysical Services Ltd | Jul 2025 - Dec 2025
+- Laid out 8 survey lines and recorded 300 readings with a resistivity meter
+- Cut set up time by 20 percent by marking electrode positions on a rope
+- Trained 4 new trainees on cable and electrode handling
+- Prepared 18 weekly field reports for the party chief
+
+Leadership and Volunteering
+President | Geophysics Students Association | Oct 2025 - Present
+- Led a committee of 7 to run a geophysics week with 5 talks and 220 attendees
+- Raised 180000 naira from 4 sponsors for field trips
+- Mentored 12 junior students on data processing
+Volunteer | Free Borehole Site Advice, Akure | Feb 2026 - Mar 2026
+- Surveyed 6 household sites with a resistivity meter and advised owners where to drill
+- Explained the results to 25 residents in simple language
+
+Skills
+- Resistivity, magnetic and seismic methods
+- MATLAB, Python and Surfer
+- Microsoft Excel and report writing
+
+Awards
+- Faculty Prize for the Best Final Year Proposal, 2025
+- Departmental Scholarship for 3 sessions
+- Dean's List, 2 sessions
+
+Certifications and Training
+- Geophysical Field Methods Training, 5 days, Federal University of Technology Akure, 2025
+- Introduction to Seismic Processing, 4 week online course, 2026
+
+Memberships and Associations
+- Student member of the Nigerian Mining and Geosciences Society
+- Member of the Geophysics Students Association
+
+Languages
+- English and Yoruba

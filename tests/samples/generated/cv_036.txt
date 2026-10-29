@@ -1,0 +1,45 @@
+Tonye Harry
+Port Harcourt, Nigeria | tonye.harry@example.com | +234 800 000 0136
+
+Education
+BEng Electrical and Electronic Engineering | Rivers State University | Expected Jul 2028
+- CGPA of 4.28 on a 5.0 scale, ranked 8th in a class of 90 students
+- Completed 10 laboratory practicals in circuits, machines and electronics
+- Earned grade A in Circuit Theory and Electromagnetic Fields
+
+Projects
+Automatic Street Light Controller | Course Project | Jan 2026 - May 2026
+- Built a light sensing controller that switches 4 lamps on at dusk and off at dawn
+- Tested the circuit on a breadboard for 2 weeks and fixed a relay fault
+- Wrote the circuit report for the course lecturer
+Inverter Battery Monitor | Class Project | September 2025 - December 2025
+- Designed a voltage display for a 12 V battery using an Arduino
+- Calibrated the display against a multimeter to within 0.2 V
+- Documented the wiring and code for the department
+
+Experience
+SIWES Trainee | Port Harcourt Electricity Distribution Company | July 2025 - September 2025
+- Inspected 30 distribution transformers and recorded oil levels
+- Wired and tested 5 prepaid meter installations
+- Reported 6 loose connections to the supervising engineer
+- Recorded daily fault calls in the district log
+
+Leadership and Volunteering
+Technical Officer | Electrical Engineering Students Association | Oct 2025 - Present
+- Led the repair of the lecture hall sound system
+- Organised a wiring safety talk for 70 students
+- Prepared the class timetable and notices
+Volunteer | Free Wiring Check for Market Traders | Feb 2026 - Mar 2026
+- Checked wiring in 20 market stalls and warned traders about unsafe sockets
+- Handed out leaflets on electrical safety to about 100 traders
+
+Skills
+- Circuit design and soldering
+- Arduino and basic Python
+- Microsoft Excel and AutoCAD Electrical
+
+Certifications and Training
+- Electrical Installation Safety Training, 3 days, Rivers State University, 2025
+
+Languages
+- English and Ikwerre

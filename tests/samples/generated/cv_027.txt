@@ -1,0 +1,60 @@
+Hadiza Lawan
+Abuja, Nigeria | hadiza_techqueen@example.com | +234 800 000 0127 | linkedin.com/in/hadiza-lawan
+
+Summary
+Computer Engineering student at Nile University of Nigeria with a CGPA of 4.38 and experience in embedded systems and mobile app development. Built a smart farm monitor and a campus feedback app.
+
+Education
+BEng Computer Engineering | Nile University of Nigeria | Expected Jul 2027
+- CGPA of 4.38 on a 5.0 scale
+- Courses in Digital Systems, Microprocessors, Operating Systems and Computer Networks
+- Practicals in circuit design and embedded programming
+- Seminar on the Internet of Things for smart agriculture
+
+Projects
+Smart Farm Monitoring System | Final Year Project | Jan 2026 - Present
+- Built a prototype soil moisture monitor that is now running on the university demonstration farm
+- Programmed an ESP32 board to send readings to a phone
+- Designed the circuit board layout in Proteus
+- Wrote the system documentation for the supervisor
+Campus Feedback App | Software Course Project | Sep 2025 - Dec 2025
+- Developed an Android app for students to send feedback to the department
+- Created the screens in Kotlin and connected them to a Firebase database
+- Tested the app with 20 classmates
+Home Security Alarm | Electronics Practical | Mar 2025 - May 2025
+- Wired a motion sensor and buzzer on a breadboard
+- Programmed an Arduino to sound the alarm when motion was detected
+- Recorded the test results in a report
+
+Experience
+Technical Intern | Abuja Smart Systems Ltd | Jul 2025 - Sep 2025
+- Installed CCTV cameras and network cables at client offices
+- Configured a router and switch for a small office
+- Documented 5 completed installations in a job log
+- Tested cameras and checked the recording storage
+
+Leadership and Volunteering
+Technical Lead | Computer Engineering Students Association | Oct 2025 - Present
+- Organised weekly coding practice for junior students
+- Maintained the association website
+- Arranged an Arduino workshop for 40 students
+Volunteer | Digital Skills for Girls, Abuja | Feb 2026 - Mar 2026
+- Taught basic computer use to secondary school girls
+- Prepared practice sheets for 25 learners
+
+Skills
+- C, Python and Kotlin
+- Arduino, ESP32 and Proteus
+- Microsoft Excel and Git
+- Network configuration
+
+Awards
+- Dean's List, 2025
+- Departmental Prize for the Best Electronics Practical, 2025
+
+Certifications and Training
+- Introduction to Networks, Cisco Networking Academy, 2025
+- Embedded Systems Basics, online course, 2026
+
+Languages
+- English and Hausa

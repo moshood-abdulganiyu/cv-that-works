@@ -1,0 +1,51 @@
+Jibrin Shuaibu Dukku
+Gombe, Nigeria | jibrin_mathwiz2004@example.com | +234 800 000 0187 | linkedin.com/in/jibrin-dukku-83921
+
+Education
+BSc Mathematics | Gombe State University | Expected Jul 2027
+- CGPA of 4.31 on a 5.0 scale, ranked 3rd in a class of 64 students
+- Earned grade A in Real Analysis, Numerical Analysis and Mathematical Methods
+- Completed 2 programming courses in Python and MATLAB
+- Gave a talk on graph theory to 40 classmates and lecturers
+- Planning a thesis on numerical solutions of differential equations
+
+Projects
+Queueing Model for the University Bus Service | Final Year Project | Jan 2026 - Present
+- Counted passengers at 3 bus stops over 10 days and fitted a queueing model in Python
+- Found that adding one bus at peak time cut the average wait from 18 to 11 minutes in the model
+- Wrote 2 thesis chapters for the supervisor
+Patterns in Leaf Arrangements of Local Plants | Course Project | Sep 2025 - Dec 2025
+- Measured the leaf angles of 5 plant species
+- Compared the angles with the golden angle
+- Presented the findings to the class
+
+Experience
+Mathematics Tutor | Gombe Excellence College | Jul 2025 - Sep 2025
+- Taught algebra and trigonometry to 25 senior secondary students
+- Prepared 12 weekly worksheets
+- Led the mock examination revision
+- Marked scripts and gave feedback to students
+
+Leadership and Volunteering
+Assistant Treasurer | Mathematics Students Association | Oct 2025 - Present
+- Kept the dues record for 90 members
+- Prepared the termly income and spending report
+- Organised a quiz night for 60 students
+Volunteer | Free Maths Clinic, Gombe | Feb 2026 - Mar 2026
+- Taught algebra to 30 pupils preparing for examinations
+- Prepared 15 practice sets
+
+Skills
+- Python, MATLAB and LaTeX
+- Numerical methods
+- Microsoft Excel
+
+Awards
+- Departmental Prize for the Best Result in Real Analysis, 2025
+- Dean's List, 2 sessions
+
+Certifications and Training
+- Python for Everybody, online course, 2025
+
+Languages
+- English, Hausa and Fulfulde

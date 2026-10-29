@@ -1,0 +1,58 @@
+Ifunanya Mbah
+Abuja, Nigeria | ifunanya.mbah@example.com | linkedin.com/in/ifunanya-mbah
+
+Summary
+Computer Science student at Baze University seeking a scholarship to study machine learning, with experience in building web and mobile tools that help students find study materials.
+
+Education
+BSc Computer Science | Baze University | Expected Jul 2027
+- Holds a CGPA of 4.71 on a 5.0 scale, ranked 1st in a class of 48 students
+- Earned distinctions in 9 courses including Algorithms and Machine Learning
+- Completed 14 programming labs in Python, Java and SQL
+- Presented a talk on neural networks to 70 students and lecturers
+
+Projects
+Past Question Finder App | Final Year Project | Jan 2026 - Present
+- Built a web app that indexes 3000 past questions and cut search time for students from 15 minutes to 2 minutes
+- Tested the app with 120 students and fixed 25 reported bugs
+- Wrote 3 thesis chapters and logged 300 hours of work
+Rainfall Prediction Model | Machine Learning Course | Sep 2025 - Dec 2025
+- Trained a regression model on 20 years of rainfall records and reached a 9 percent error
+- Presented the results to 55 classmates and 2 lecturers
+
+Experience
+Software Intern | Abuja Learning Tools Ltd | Jul 2025 - Sep 2025
+- Fixed 40 bugs in a student portal and cut page load time by 30 percent
+- Wrote 15 test cases for a payment module
+- Led the code review of a login form
+- Trained 4 new interns on version control
+
+Leadership and Volunteering
+President | Computing Society | Oct 2025 - Present
+- Led a committee of 9 to run a hackathon with 22 teams
+- Raised 260000 naira from 5 sponsors for the hackathon prizes
+- Mentored 14 junior students on Python
+Volunteer | Coding Club for Secondary Schools, Abuja | Feb 2026 - Apr 2026
+- Taught Python basics to 45 pupils in 3 schools
+- Prepared 12 weekly practice sheets
+
+Skills
+- Python, Java, SQL and JavaScript
+- Machine learning with scikit-learn
+- Git and Linux on 3 team projects
+
+Awards
+- Faculty Prize for the Best Final Year Proposal, 2025
+- Departmental Scholarship for 3 sessions
+- Winner among 18 teams, University Hackathon, 2025
+
+Certifications and Training
+- Machine Learning Specialisation, 4 courses, Coursera, 2025
+- SQL for Data Analysis, 4 week online course, 2026
+
+Memberships and Associations
+- Student member of the Nigerian Computer Society
+- Member of the Computing Society, Baze University
+
+Languages
+- English and Igbo

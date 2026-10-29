@@ -1,0 +1,49 @@
+Oladimeji Fabunmi
+Ado-Ekiti, Nigeria | oladimeji.fabunmi@example.com | +234 800 000 0149 | linkedin.com/in/oladimeji-fabunmi-81937
+
+Summary
+Chemical Engineering student at Afe Babalola University with a CGPA of 4.80 and first class standing, applying for a scholarship for postgraduate study in process engineering. Won an inter-university design competition and led a volunteer water treatment project serving 400 residents.
+
+Education
+BEng Chemical Engineering | Afe Babalola University | Expected Jul 2027
+- Holds a CGPA of 4.80 on a 5.0 scale, ranked 1st in a class of 48 students
+- Earned distinctions in 9 courses including Mass Transfer and Chemical Reaction Engineering
+- Completed 15 laboratory sessions in distillation, heat exchange and reactor operation with an average of 90 percent
+
+Projects
+Pilot Scale Water Treatment Unit | Final Year Research Project | Jan 2026 - Present
+- Designed a sand and activated carbon filter that cut turbidity from 85 to 4 NTU in bench tests
+- Built a pilot unit that treated 50 litres per hour in trials
+- Logged 300 hours of test results and presented the design to 70 staff and students
+Heat Exchanger Sizing Tool | Course Project | Sep 2025 - Dec 2025
+- Wrote an Excel tool that sizes shell and tube exchangers and cut design time from 4 hours to 30 minutes
+- Validated the tool against 12 textbook problems with a maximum error of 2 percent
+
+Experience
+SIWES Trainee | Ota Chemicals and Plastics Ltd | Jul 2025 - Dec 2025
+- Monitored 6 reactor batches and kept yields within 3 percent of target
+- Cut raw material waste by 9 percent by correcting the weighing sheet
+- Trained 6 new trainees on safety data sheet use
+- Prepared 22 weekly production reports for the plant manager
+
+Leadership and Volunteering
+Chairman | Chemical Engineering Students Association | Oct 2025 - Present
+- Led a committee of 9 to run a design competition with 18 teams
+- Raised 250000 naira from 5 sponsors for the annual engineering week
+- Mentored 14 junior students on process calculations
+Volunteer | Community Water Treatment Project | Jun 2025 - Aug 2025
+- Led 12 student volunteers to install a filter system serving 400 residents
+- Cut water related complaints at the clinic by 30 percent over 3 months
+
+Skills
+- Aspen HYSYS, MATLAB and Excel
+- Process design and lab analysis
+- Technical report writing
+
+Awards
+- First prize among 20 teams, Inter-University Chemical Engineering Design Competition, 2025
+- Faculty Merit Award for the top 2 students in 400 level, 2025
+- Departmental Scholarship for 3 sessions
+
+Languages
+- English and Yoruba

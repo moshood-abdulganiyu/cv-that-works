@@ -1,0 +1,64 @@
+Chukwuemeka Nnadozie
+Owerri, Nigeria | chukwuemeka.nnadozie@example.com | +234 800 000 0119 | linkedin.com/in/chukwuemeka-nnadozie
+
+Summary
+Mechatronics Engineering student with a CGPA of 4.67 seeking graduate study in robotics and control systems. Won a faculty research prize and built an automated sorting system for a laboratory course.
+
+Education
+BEng Mechatronics Engineering | Federal University of Technology Owerri | Expected Jul 2027
+- CGPA of 4.67 on a 5.0 scale, ranked 2nd in a class of 54 students
+- Earned distinctions in Control Systems, Robotics and Microprocessor Systems
+- Completed 12 laboratory sessions in sensors, actuators and PLC programming
+- Presented a seminar on model predictive control to 50 staff and students
+
+Projects
+Automated Parts Sorting System | Final Year Research Project | Jan 2026 - Present
+- Designed a conveyor sorting system that separates parts by colour with 94 percent accuracy in bench tests
+- Programmed an Arduino and a colour sensor to control two servo gates
+- Tested the system on 300 sample parts and logged the errors
+- Drafted a conference paper abstract from the results
+Line Following Robot | Robotics Course Project | Sep 2025 - Dec 2025
+- Built a robot that follows a track using infrared sensors and a PID controller
+- Tuned the controller until the lap time dropped from 48 seconds to 31 seconds
+- Documented the circuit and code for the course lecturer
+Home Temperature Controller | Control Systems Course | Mar 2025 - May 2025
+- Modelled a simple heating system in MATLAB and simulated three controller designs
+- Selected the design with 12 percent overshoot and explained the choice in a report
+
+Experience
+SIWES Trainee | Imo Industrial Automation Ltd Owerri | Jul 2025 - Dec 2025
+- Wired and tested 6 control panels for a bottling line under senior engineers
+- Programmed ladder logic for a conveyor motor starter and reduced start up faults on the line
+- Recorded maintenance checks on 20 machines in a shared logbook
+- Trained 4 new trainees on panel safety rules
+
+Leadership and Volunteering
+Chairman | Mechatronics Engineering Students Society | Oct 2025 - Present
+- Led the society robotics workshop series with 3 sessions for junior students
+- Organised an inter-department robotics contest for 16 teams
+- Mentored 8 first year students on project work
+Volunteer | Secondary School STEM Outreach | Feb 2026 - Mar 2026
+- Taught basic circuits and Arduino to students in two secondary schools
+- Prepared simple kits that the schools kept for their science clubs
+
+Skills
+- MATLAB, Python and C
+- PLC ladder logic and Arduino programming
+- SolidWorks and basic PCB layout
+- Technical writing and presentation
+
+Awards
+- Faculty Research Prize for the best 500 level project proposal, 2026
+- Departmental Merit Scholarship, 2025
+- Dean's List, 3 sessions
+
+Certifications and Training
+- PLC Programming Training, Owerri Automation Institute, 2025
+- Introduction to Robotics, online specialisation, 2026
+
+Memberships and Associations
+- Student member of the Nigerian Society of Engineers
+- Student member of the IEEE student branch at FUTO
+
+Languages
+- English and Igbo

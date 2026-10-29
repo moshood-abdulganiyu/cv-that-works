@@ -1,0 +1,35 @@
+Toluwalase Ige
+Ile-Ife, Nigeria | tolu_codes_hard@example.com | +234 800 000 0143
+
+Education
+BSc Computer Science | Obafemi Awolowo University | Expected Jul 2027
+- CGPA of 4.30 on a 5.0 scale
+- Courses in Data Structures, Algorithms, Databases and Operating Systems
+- Attendance at departmental seminars on machine learning and cybersecurity
+- Practicals in Java, Python and SQL
+- Interest in artificial intelligence and mobile app development
+- Participation in a coding bootcamp for second year students
+
+Experience
+Web Developer Trainee | Ife Digital Solutions | Jul 2025 - Sep 2025
+- Building of web pages with HTML and CSS
+- Testing of forms on different browsers
+- Updating of client content on the company website
+- Preparation of weekly progress notes
+- Observation of the senior developers during code review
+Teaching Assistant | Department of Computer Science | Jan 2026 - Jun 2026
+- Support for first year students during programming practicals
+- Marking of weekly Java exercises
+- Arrangement of laptops in the computer room
+
+Leadership and Volunteering
+Founder | Campus Coding Club | Sep 2025 - Present
+- Founded a coding club for first and second year students
+- Meetings every Saturday with practice questions and snacks
+- Invitation of senior students as guest tutors
+- Keeping of a list of members and their programming interests
+Volunteer | Digital Literacy Day for Primary Schools | Feb 2026 - Mar 2026
+- Teaching of basic computer use to pupils
+
+Languages
+- English and Yoruba
