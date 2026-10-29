@@ -6,15 +6,17 @@ A free web tool for first-time CVs, built for Brainstorm Group (BSG) CV training
 
 **Live site:** https://cv-that-works.vercel.app
 
-**Review page:** open `https://cv-that-works.vercel.app/review.html`, enter the review code and press Open. (The shorter `/review` address does not work yet.)
+**Review page (trainer only):** `https://cv-that-works.vercel.app/review.html`. Enter the review code and press Open. (The shorter `/review` address does not work yet.)
 
 Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan. The Vercel free plan is for non-commercial use, which fits a free class. If the class ever becomes paid, revisit hosting.
 
 ## Contents
 - [Current status](#current-status)
 - [What a student sees](#what-a-student-sees)
-- [Scoring](#scoring-rubric-cv-rubric-v10)
+- [Scoring](#scoring-rubric-cv-rubric-v12)
+- [Rubric history](#rubric-history)
 - [How the voters work](#how-the-voters-work)
+- [How it was tested](#how-it-was-tested)
 - [Privacy](#privacy)
 - [Layout](#layout)
 - [API](#api)
@@ -25,14 +27,23 @@ Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan
 - [Deploy](#deploy)
 - [Free-tier limits](#free-tier-limits-checked-october-2026-re-check-before-a-class-pilot)
 - [Roadmap](#roadmap)
+- [Known issues](#known-issues)
 - [Rules for the build](#rules-for-the-build)
 
 ## Current status
-- **Live and open to students** with two voters: the rules code and the Gemini AI judge, blended into one score.
-- **Upload limit:** 7 per device per day while the class uses it (the code default is 3, set in Vercel).
-- **One list of advice:** the rules and the AI no longer give two separate fix lists. They are merged into one (see [Advice merge](#advice-merge)).
-- **Third voter (trained model):** not added yet. It needs real CVs that the trainer has corrected, and the evaluation notebook refuses to recommend a model below 50 corrected CVs. Treat anything under about 100 as an experiment. Training on made-up CVs is not allowed.
-- **Data keeps arriving:** students who tick the optional save box add redacted CVs to the review store, ready for the trainer to correct.
+Phases 1 and 2 are finished and live. The tool is open to students with **two voters**: the rules code and the Gemini AI judge, blended into one score. If the AI is unavailable, students still get the rules-only score and the screen says so.
+
+| Item | Status |
+|---|---|
+| Rules engine, API, page | Live |
+| AI judge, blending, advice merge | Live |
+| Upload limit | 7 per device per day for the class (code default is 3, set in Vercel) |
+| Saved CVs for the trainer | 74 saved, 23 waiting for review, 0 corrected (29 October 2026) |
+| Third voter (trained model) | **Not added. Waiting for more real corrected CVs** |
+
+**Why the model is on hold.** A model can only learn the trainer's judgment from real CVs the trainer has marked by hand. With 0 corrected CVs there is nothing to train on, and the evaluation notebook refuses to recommend a model below 50 corrected CVs (around 100 is where a result becomes worth trusting). Training on made-up CVs is not allowed, because they were scored by the tool's own rules and a model trained on them would only learn to copy those rules. The tool is complete and useful without it.
+
+**What happens next, when real CVs arrive:** correct them at the review page, export, run the notebook, and add the model only if it beats the simple guesses. See [Training the model](#training-the-model-step-9).
 
 ## What a student sees
 - **Upload page:** file, target (internship, scholarship, graduate study, leadership, not sure), a consent tickbox, an optional save tickbox, one "Score my CV" button. The button stays grey until a file is chosen and the consent box is ticked. A strip below shows how the 100 points are split.
@@ -41,7 +52,7 @@ Everything is free to run: Vercel free plan, Gemini free tier, Upstash free plan
 - **Re-upload** shows the previous score next to the new one.
 - Categories where the two readers disagreed are marked "Less certain".
 
-## Scoring (rubric `cv-rubric-v1.0`)
+## Scoring (rubric `cv-rubric-v1.2`)
 | Category | Points |
 |---|---|
 | Evidence and numbers | 20 |
@@ -63,6 +74,17 @@ With no target (or "not sure"), Fit to goal is dropped and the other 95 points a
 | Below 50 | Rebuild |
 
 The exact number is approximate. Short first CVs are not punished: missing experience costs little if projects and volunteering are well written.
+
+## Rubric history
+Every report is stamped with the rubric version. The version changes whenever a number or word list in `core/rubric.py` changes.
+
+| Version | Change |
+|---|---|
+| `cv-rubric-v1.0` | First locked rubric (steps 1 to 3) |
+| `cv-rubric-v1.1` | Evidence rule for small CVs: at least all-but-one bullets must carry a number (2 bullets need 1, 3 need 2, 4 need 3). Tighter Fit keyword matching, double-counted clichés, team flag and heading-only section credit |
+| `cv-rubric-v1.2` | Course-specific placement headings count as Experience: Farm Practical Year, Clinical Postings, Clinical Rotations, Field Attachment, Practicum, SIWES, Housemanship, Teaching Practice and similar. Found by the generated test set |
+
+CVs saved before a version change keep the scores they had at the time.
 
 ## How the voters work
 1. **Rules code** counts the facts (numbers in bullets, headings, email, LinkedIn, phone, city, page count, clichés, tense, weak phrases) and gives a complete score by itself.
@@ -92,7 +114,29 @@ The scores come from the blend above. The advice (fixes and rewrites) is merged 
 
 The AI labels each fix with the category it improves. A fix without a valid label is ignored by the merge. If the AI is unavailable, students get the rules fixes and rewrites unchanged. Merging never changes the scores.
 
-A third voter, a small model trained on real CVs the trainer has corrected, is planned for phase 3. It will take the middle value of the three. It is never trained on made-up CVs.
+### Third voter (planned)
+A small model trained on real CVs the trainer has corrected will take the middle value of the three voters on judged categories. It is never trained on made-up CVs. See [Roadmap](#roadmap).
+
+## How it was tested
+**Calibration ladder.** Eight CV versions with known planted flaws (`tests/ladder.py`). The order must be right, weak near 40 and strong near 90. In the repeat-run check (8 ladder CVs, 3 runs each, target internship, rubric v1.0) the order held, the strongest scored 91 and the weakest 36, no CV moved a band, and the largest spread between runs was 3 points.
+
+**Generated test set.** 120 fictional CVs (`tests/samples/generated/`, `cv_001.txt` to `cv_120.txt`) were written with another AI, each with a planned score zone and planned flaws (listed in `manifest.csv`). They are used **only to test the rules engine**, never to train a model. First run, rules only, before the v1.2 heading fix:
+
+| Planned zone | CVs | In zone | Mean score |
+|---|---|---|---|
+| 20 to 40 | 20 | 19 | 29.6 |
+| 40 to 50 | 16 | 7 | 39.4 |
+| 50 to 60 | 15 | 4 | 44.6 |
+| 60 to 70 | 15 | 6 | 57.1 |
+| 70 to 80 | 16 | 10 | 70.2 |
+| 80 to 90 | 16 | 14 | 83.1 |
+| 90 to 100 | 22 | 20 | 93.1 |
+
+80 of 120 landed in their planned zone. Averages rise in the right order and both ends are right. The middle zones run 5 to 10 points under plan. The worst misses lost the full 20 on Evidence and 12 to 20 on Bullet quality, which comes from the generated CVs having no numbers and weak verbs together, so the engine is not tuned to hit the planned zones. The trainer's own marking is the reference.
+
+**What the test set found:** five course-specific headings (Farm Practical Year, Clinical Postings, Field Attachment, Practicum, Clinical Rotations) were not recognised, so those students would have lost the 4 points for Experience or Leadership. Fixed in `cv-rubric-v1.2`.
+
+Re-run the set with `python -m tests.run_generated` after any rubric change. Use `python -m tests.diagnose 104 64 74` to see what the engine counted in chosen CVs. A section marked "ENGINE MISS?" in the output is a possible engine bug.
 
 ## Privacy
 - Uploaded files are read in memory, scored and deleted. Nothing is written to disk.
@@ -104,7 +148,7 @@ A third voter, a small model trained on real CVs the trainer has corrected, is p
 
 ## Layout
 ```
-app.py                Vercel entrypoint (plain WSGI). Routes: POST /api/score, GET /api/health, GET /, GET /review, /api/review/*
+app.py                Vercel entrypoint (plain WSGI). Routes: POST /api/score, GET /api/health, GET /, /api/review/*
 core/rubric.py        weights, bands, word lists (change numbers here, bump the version)
 core/reader.py        PDF and DOCX reading, clear errors, reads link addresses, repairs glued dates
 core/checker.py       the one shared checker that finds the facts
@@ -122,7 +166,9 @@ public/dark-mode-logo.jpg    Brainstorm Group (BSG) logo for dark mode
 public/review.html    trainer review page (needs the review code)
 train/                evaluation notebook for step 9. export.json and model_v1.json stay private (see .gitignore)
 tests/                ladder.py (builds the calibration CVs), test_smoke, test_api, test_no_summary,
-                      test_judge, test_blend, test_merge, test_review, test_routes, repeat_run
+                      test_judge, test_blend, test_merge, test_review, test_routes, repeat_run,
+                      split_batches, run_generated, diagnose
+tests/samples/generated/   120 fictional CVs, manifest.csv and raw_batches.txt (test only, never for training)
 docs/                 rubric_v1.md, step3_test_report.md, step4_deploy.md
 vercel.json           excludes tests and docs from the deployed function
 requirements.txt      pypdf, python-docx (runtime only)
@@ -153,18 +199,41 @@ Errors: `{"ok": false, "error": {"code", "message"}}`. Codes: `missing_consent`,
 New variables only apply on the next deployment, so push a change after editing them. An empty commit works: `git commit --allow-empty -m "apply settings"` then `git push`.
 
 ## Trainer review page
-Open `/review` and enter the review code. CVs the two readers disagreed on come first. Type your own score for each category, save, and download your corrections as JSON for training (step 9). Delete a CV from the same page. Mark by your own judgment, not by copying the tool's numbers, or the model will only learn the tool's habits. Do not correct non-undergraduate CVs: the export contains corrected CVs only.
+Open `/review.html` and enter the review code. CVs the two readers disagreed on come first. Type your own score for each category, save, and download your corrections as JSON for training (step 9). Delete a CV from the same page.
+
+Marking rules:
+- Mark by your own judgment, not by copying the tool's numbers, or the model will only learn the tool's habits.
+- Mark undergraduates only (first-time writers included). Do not correct graduate or postgraduate CVs: the export contains corrected CVs only.
+- Skip or delete duplicates.
+- Be consistent: a clear action verb plus scope plus result is high, "responsible for" is low. Short first CVs are not punished if projects and volunteering are well written.
 
 ## Training the model (step 9)
+**Status: paused until enough corrected real CVs exist.**
+
+| Corrected CVs | What to do |
+|---|---|
+| Under 30 | Keep collecting. Do not run the notebook |
+| 30 to 49 | Run the notebook to test that it works. It will say "do not add". That is expected |
+| 50 to 99 | The notebook can recommend a model. Treat it as an experiment and re-test as more arrive |
+| About 100 or more | A model result becomes worth trusting |
+
+Only CVs the trainer has marked count. Saved and corrected are different.
+
 Work on your own computer, never in a hosted notebook, because the export holds students' redacted CVs.
 
-1. Correct saved CVs at `/review` until you have enough. Under 50 the notebook will say "do not add". Around 100 is where a model becomes worth trusting.
-2. Download the export from `/api/review/export` and save it as `train/export.json`. It is git-ignored.
+1. Correct saved CVs at `/review.html` until you have enough.
+2. Download the export and save it as `train/export.json`. It is git-ignored.
 3. Install once: `pip install jupyter pandas scikit-learn numpy`.
-4. Run `jupyter notebook`, open the notebook in `train/`, and run each cell from the top.
+4. Run `jupyter notebook` inside `train/`, open the `evaluate` notebook, and run each cell from the top.
 5. The notebook rebuilds the rules counts with the same `core/checker.py` the live tool uses, tests a small model against simple guesses on CVs it never saw (average, rules-only, blended), and prints a verdict. It saves `train/model_v1.json` only if the verdict is to add the model.
 
 The model scores judged items only (bullets, summary, language, fit). If it does not beat the simple guesses, it is not added.
+
+**Never train on** the calibration ladder, the 120 generated CVs or any other made-up CV.
+
+**Before comparing, note:** CVs saved before a rubric or checker change hold stored scores from the older code. Decide whether to recompute them or read the baselines with that in mind. The Language baseline uses the stored rules part only, so its error against the trainer's full 0 to 10 mark may look worse than it is. Fit rows exist only for CVs scored with a target.
+
+**If the verdict is to add the model (step 10):** build `core/model.py` to load `model_v1.json` and score the judged categories from the same checker features (a dot product, no extra packages), take the middle value of rules, AI and model, keep the 30% "less certain" rule, adjust each voter's weight by how often it agrees with the trainer, re-run the ladder, `test_merge`, `test_blend` and `repeat_run`, then add the class-wide weak-spots view (counts only) and run a class pilot.
 
 ## Run and test locally
 ```
@@ -177,11 +246,12 @@ python -m tests.test_merge
 python -m tests.test_review
 python -m tests.test_routes
 python -m tests.test_api
-python -m tests.repeat_run     (needs a real Gemini key in that window only, about 5 minutes)
+python -m tests.run_generated     (scores the 120 fictional CVs, writes results.csv)
+python -m tests.repeat_run        (needs a real Gemini key in that window only, about 5 minutes)
 ```
 Score one file from the command line: `python -m core.engine path\to\cv.pdf internship`
 
-Re-run the calibration tests after any change to `core/checker.py`, `core/reader.py` or `core/rubric.py`.
+Re-run the calibration tests after any change to `core/checker.py`, `core/reader.py` or `core/rubric.py`. The lines "invalid pdf header" and "EOF marker not found" in the test output are normal noise from a deliberately broken PDF test.
 
 ## Deploy
 Vercel deploys on every push to `main`.
@@ -190,7 +260,7 @@ git add -A
 git commit -m "describe the change"
 git push
 ```
-The "Redeploy" button rebuilds the old commit, so push a change instead. After a deploy, check `/api/health`: `review_database` and `review_code_set` should both be `true`, and `/style.css` should load.
+The "Redeploy" button rebuilds the old commit, so push a change instead. After a deploy, check `/api/health`: `review_database` and `review_code_set` should both be `true`, the rubric version should match `core/rubric.py`, and `/style.css` should load.
 
 ## Free-tier limits (checked October 2026, re-check before a class pilot)
 - Vercel Hobby: free, non-commercial. Confirm the function-call limit on the Usage page.
@@ -202,12 +272,20 @@ The "Redeploy" button rebuilds the old commit, so push a change instead. After a
 |---|---|---|
 | 1 Rules-only tool | 1 to 6 | Done and live |
 | 2 AI judge | 7 AI judge, 8 blending and review | Done and live |
-| 3 Trained model | 9 collect corrected CVs and train | In progress: collecting data, notebook ready |
+| 3 Trained model | 9 collect corrected CVs and train | Paused: notebook ready, 74 CVs saved, 0 corrected, waiting for more real CVs |
 | 3 Trained model | 10 add the model as the third voter, weak-spots view | Not started |
+
+## Known issues
+- `/review` returns `not_found`. Use `/review.html`. Fixing the shortcut needs a change in `app.py`.
+- The page gives up after 60 seconds, which may fail on very slow connections.
+- A short CV with fewer than 3 bullets marked with "-" may show a very low action-verb count. Not seen on real CVs yet.
+- Some generated-test CVs scored 5 to 10 points under their plan in the middle zones. The cause is mostly the test CVs, not the engine (see [How it was tested](#how-it-was-tested)).
+- If the AI stops answering, check the model names in Google AI Studio, update `GEMINI_MODEL` and `GEMINI_MODEL_BACKUP` in Vercel, then push a change.
 
 ## Rules for the build
 - Never invent metrics, dates, roles or skills. Use [__] placeholders.
 - Flag blurred distinctions: cumulative vs yearly, participant vs leader, prototype vs deployed, ongoing vs completed, team vs individual, registered vs informal group, undergraduates vs graduates.
 - Only numbers a student can defend should stay on a CV, and the screen says so.
 - The tool must always return a result, with the rules-only score as the fallback.
-- Train only on real CVs the trainer has corrected.
+- Train only on real CVs the trainer has corrected. Never on the ladder, the generated CVs or other made-up CVs.
+- Never send student CVs into a chat. Only summaries, counts and results tables.
