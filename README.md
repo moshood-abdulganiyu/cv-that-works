@@ -41,6 +41,8 @@ Phases 1 and 2 are finished and live. The tool is open to students with **two vo
 | Saved CVs for the trainer | 74 saved, 23 waiting for review, 0 corrected (29 October 2026) |
 | Third voter (trained model) | **Not added. Waiting for more real corrected CVs** |
 
+**Usage:** 100+ CVs scored between 22/10/2026 and 28/10/2026. 74 were saved with consent for trainer review (29 October 2026).
+
 **Why the model is on hold.** A model can only learn the trainer's judgment from real CVs the trainer has marked by hand. With 0 corrected CVs there is nothing to train on, and the evaluation notebook refuses to recommend a model below 50 corrected CVs (around 100 is where a result becomes worth trusting). Training on made-up CVs is not allowed, because they were scored by the tool's own rules and a model trained on them would only learn to copy those rules. The tool is complete and useful without it.
 
 **What happens next, when real CVs arrive:** correct them at the review page, export, run the notebook, and add the model only if it beats the simple guesses. See [Training the model](#training-the-model-step-9).
